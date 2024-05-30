@@ -3,7 +3,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Drawer from '@mui/material/Drawer';
 import { FC } from 'react';
 import { useRecoilValue } from 'recoil';
-import BigDipperLogoRed from 'shared-utils/assets/big-dipper-red.svg';
+import StalwartLogo from 'shared-utils/assets/stwart-logo.svg';
 import BigDipperLogoWhite from 'shared-utils/assets/big-dipper-white.svg';
 import { readTheme } from '@/recoil/settings';
 import TitleBar from '@/components/nav/components/title_bar';
@@ -50,7 +50,7 @@ const Desktop: FC<DesktopProps> = ({ className, title }) => {
             }),
           }}
         >
-          {theme === 'light' ? (
+          {/* {theme === 'light' ? (
             <BigDipperLogoRed
               className={classes.logo}
               onClick={toggleMenu}
@@ -64,7 +64,14 @@ const Desktop: FC<DesktopProps> = ({ className, title }) => {
               role="button"
               aria-label="toggle menu"
             />
-          )}
+          )} */}
+
+          <StalwartLogo
+            className={classes.logo}
+            onClick={toggleMenu}
+            role="button"
+            aria-label="toggle menu"
+          />
           <MenuItems />
         </Drawer>
       </div>

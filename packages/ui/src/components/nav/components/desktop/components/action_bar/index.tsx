@@ -27,7 +27,7 @@ const ActionBar: FC<ActionBarProps> = ({ toggleNetwork, className, isNetwork }) 
           toggleNetwork={toggleNetwork}
         />
         {/* <WalletDetails /> */}
-        <ThemeToggle className={classes.toggle} />
+        {/* <ThemeToggle className={classes.toggle} /> */}
         <SettingsList />
         {/* <ConnectWallet /> */}
       </div>

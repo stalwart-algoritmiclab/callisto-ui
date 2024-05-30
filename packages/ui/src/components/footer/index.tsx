@@ -11,8 +11,8 @@ import AppTrans from '@/components/AppTrans';
 import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC } from 'react';
 import { useRecoilValue } from 'recoil';
-import FooterLogoLight from 'shared-utils/assets/big-dipper-red.svg';
-import FooterLogoDark from 'shared-utils/assets/big-dipper-white.svg';
+
+import StalwartLogo from 'shared-utils/assets/stwart-logo.svg';
 
 const { title } = chainConfig();
 
@@ -33,12 +33,13 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
         {/* logo */}
         {/* ============================= */}
         <div className="footer__logo--container">
-          {theme === 'light' ? (
+          <StalwartLogo className="footer__logo" />
+          {/* {theme === 'light' ? (
             <FooterLogoLight className="footer__logo" />
           ) : (
             <FooterLogoDark className="footer__logo" />
-          )}
-          <p className="footer__slogan">{title}</p>
+          )} */}
+          {/* <p className="footer__slogan">{title}</p> */}
         </div>
         {/* ============================= */}
         {/* links */}
@@ -57,7 +58,7 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
           {/* ============================= */}
           {/* social */}
           {/* ============================= */}
-          <div className="footer__social">
+          {/* <div className="footer__social">
             <h3>{t('common:community')}</h3>
             <SocialMedia />
             <div>
@@ -68,7 +69,7 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
                 </Button>
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Divider />

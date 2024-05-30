@@ -61,7 +61,7 @@ const Menu = (props: MenuProps) => {
       {/* ================================== */}
       {/* Theme Drawer */}
       {/* ================================== */}
-      <Drawer
+      {/* <Drawer
         anchor="bottom"
         open={themeOptions.drawerOpen}
         onClose={themeOptions.toggleDrawer}
@@ -76,7 +76,7 @@ const Menu = (props: MenuProps) => {
             </div>
           ))}
         </div>
-      </Drawer>
+      </Drawer> */}
       {/* ================================== */}
       {/* Main Content */}
       {/* ================================== */}
@@ -101,7 +101,7 @@ const Menu = (props: MenuProps) => {
             </Typography>
             <ExpandMoreOutlinedIcon fontSize="small" />
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </div>
     </>

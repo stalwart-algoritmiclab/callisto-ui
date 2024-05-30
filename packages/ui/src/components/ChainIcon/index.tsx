@@ -94,6 +94,8 @@ import jackalLogoDark from 'shared-utils/assets/logos/jackal-dark.svg?url';
 import jackalLogoLight from 'shared-utils/assets/logos/jackal-light.svg?url';
 import archwayLogoDark from 'shared-utils/assets/logos/archway-dark.svg?url';
 import archwayLogoLight from 'shared-utils/assets/logos/archway-light.svg?url';
+import stalwartLogoLight from 'shared-utils/assets/logos/stwart-logo.svg?url';
+import stalwartIconLight from 'shared-utils/assets/icons/stwart-icon.svg?url';
 
 interface IconProps extends Omit<ImageProps, 'id' | 'src'> {
   type: 'icon' | 'logo';
@@ -111,6 +113,12 @@ const ChainIcon = ({
   let [iconDark, iconLight] =
     type === 'icon' ? [baseIconLight, baseIconLight] : [baseLogoLight, baseLogoLight];
   switch (chainName) {
+    case 'stwart':
+      [iconDark, iconLight] =
+        type === 'icon'
+          ? [stalwartIconLight, stalwartIconLight]
+          : [stalwartLogoLight, stalwartLogoLight];
+      break;
     case 'agoric':
       [iconDark, iconLight] =
         type === 'icon'
