@@ -5,9 +5,11 @@ subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
     success
     block {
       timestamp
+      __typename
     }
     messages
     logs
+    __typename
   }
 }
 
@@ -18,8 +20,10 @@ query Transactions($limit: Int = 7, $offset: Int = 0) {
     success
     block {
       timestamp
+      __typename
     }
     messages
     logs
+    __typename
   }
 }

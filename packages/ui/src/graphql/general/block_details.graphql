@@ -18,17 +18,17 @@ query BlockDetails($height: bigint, $signatureHeight: bigint) {
     }
   }
   preCommitsAggregate: pre_commit_aggregate(where: {height: {_eq: $signatureHeight}}) {
-      aggregate{
-        sum {
-          votingPower: voting_power
-        }
+    aggregate {
+      sum {
+        votingPower: voting_power
       }
+    }
   }
   preCommits: pre_commit(where: {height: {_eq: $signatureHeight}}) {
     validator {
-        validatorInfo: validator_info {
-          operatorAddress: operator_address
-        }
+      validatorInfo: validator_info {
+        operatorAddress: operator_address
       }
+    }
   }
 }

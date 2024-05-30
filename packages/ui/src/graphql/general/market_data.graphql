@@ -1,21 +1,27 @@
-query MarketData ($denom: String) {
+query MarketData($denom: String) {
   communityPool: community_pool(order_by: {height: desc}, limit: 1) {
     coins
+    __typename
   }
   inflation: inflation(order_by: {height: desc}, limit: 1) {
     value
+    __typename
   }
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
     marketCap: market_cap
     price
+    __typename
   }
   supply {
     coins
+    __typename
   }
   bondedTokens: staking_pool(order_by: {height: desc}, limit: 1) {
     bonded_tokens
+    __typename
   }
   distributionParams: distribution_params {
     params
+    __typename
   }
 }

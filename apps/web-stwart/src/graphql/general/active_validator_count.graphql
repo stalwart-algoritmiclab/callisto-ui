@@ -2,16 +2,22 @@ query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {status: {_eq: 3}}) {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
   inactiveTotal: validator_status_aggregate(where: {status: {_neq: 3}}) {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
   total: validator_status_aggregate {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
 }

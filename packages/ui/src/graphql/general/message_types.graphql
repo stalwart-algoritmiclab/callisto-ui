@@ -1,8 +1,9 @@
-query MessageTypes{
-  msgTypes: message_type{
+query MessageTypes {
+  msgTypes: message_type {
     type
     module
     label
+    __typename
   }
 }
 
@@ -31,7 +32,6 @@ subscription MessagesByTypesListener($types: _text = "{}", $limit: bigint = 7, $
     }
   }
 }
-
 query MessagesByTypes($types: _text = "{}", $limit: bigint = 7, $offset: bigint = 0) {
   messagesByTypes: messages_by_type(args: {types: $types, limit: $limit, offset: $offset}) {
     transaction {
@@ -43,7 +43,10 @@ query MessagesByTypes($types: _text = "{}", $limit: bigint = 7, $offset: bigint 
       block {
         height
         timestamp
+        __typename
       }
+      __typename
     }
+    __typename
   }
 }

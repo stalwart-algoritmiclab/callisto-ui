@@ -4,6 +4,7 @@ query TransactionDetails($hash: String) {
     height: height
     block: block {
       timestamp: timestamp
+      __typename
     }
     fee: fee
     gasUsed: gas_used
@@ -13,5 +14,6 @@ query TransactionDetails($hash: String) {
     messages: messages
     logs
     rawLog: raw_log
+    __typename
   }
 }
