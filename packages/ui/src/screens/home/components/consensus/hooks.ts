@@ -9,7 +9,6 @@ import * as R from 'ramda';
 import { useCallback, useEffect, useState } from 'react';
 
 const { endpoints, prefix } = chainConfig();
-console.log('🚀 ~ prefix:', prefix);
 
 /* Checking if the code is running on the server or the client. */
 const ssrMode = typeof window === 'undefined';

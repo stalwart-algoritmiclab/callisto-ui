@@ -111,7 +111,9 @@ const ChainIcon = ({
   const { classes, cx } = useStyles();
 
   let [iconDark, iconLight] =
-    type === 'icon' ? [baseIconLight, baseIconLight] : [baseLogoLight, baseLogoLight];
+    type === 'icon'
+      ? [stalwartIconLight, stalwartIconLight]
+      : [stalwartLogoLight, stalwartLogoLight];
   switch (chainName) {
     case 'stwart':
       [iconDark, iconLight] =

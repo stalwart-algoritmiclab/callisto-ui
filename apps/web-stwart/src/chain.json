@@ -7,7 +7,7 @@
   },
   "previewImage": "https://s3.bigdipper.live/desmos.png",
   "themes": {
-    "default": "light",
+    "default": "dark",
     "themeList": ["dark", "light", "deuteranopia", "tritanopia"],
     "dark": {
       "primary": {
