@@ -14547,21 +14547,19 @@ export type ValidatorsLazyQueryHookResult = ReturnType<typeof useValidatorsLazyQ
 export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, ValidatorsQueryVariables>;
 export const ValidatorAddressesDocument = gql`
     query ValidatorAddresses {
-  validator(
-    where: {validator_info: {operator_address: {_is_null: false}, consensus_address: {_is_null: false}, self_delegate_address: {_is_null: false}}}
-  ) {
+  validator(where: {validator_info: {operator_address: {_is_null: false}, consensus_address: {_is_null: false}, self_delegate_address: {_is_null: false}}}) {
     validatorInfo: validator_info {
       operatorAddress: operator_address
       selfDelegateAddress: self_delegate_address
       consensusAddress: consensus_address
+      __typename
     }
-    validatorDescriptions: validator_descriptions(
-      limit: 1
-      order_by: {height: desc}
-    ) {
+    validatorDescriptions: validator_description {
       moniker
       avatarUrl: avatar_url
+      __typename
     }
+    __typename
   }
 }
     `;

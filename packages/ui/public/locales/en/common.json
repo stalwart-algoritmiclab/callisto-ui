@@ -44,7 +44,7 @@
   "nothingToShow": "Nothing to show",
   "notFound": "Not Found",
   "useValidatorAddress": "Please use a validator address instead",
-  "description": "Big Dipper is an open-source block explorer and token management tool serving over 10 proof-of-stake blockchains. It has been forked more than 100 times on GitHub and has served audiences from 140 countries and regions.",
+  "description": "Discover seamless blockchain navigation with Stalwart's Block Explorer. Our AI-driven platform offers an unparalleled view of detailed transaction data and block histories, enhancing transparency and security in real-time. Experience the next level of blockchain technology, designed for robustness and user efficiency.",
   "supply": "Supply",
   "blockTimeAgo": "Latest block displayed was {{time}}",
   "settings": "Settings",
@@ -92,5 +92,6 @@
   "walletTitle": "Connected wallets",
   "searchType": "Search type",
   "selectAll": "Select All",
-  "filter": "Filter"
+  "filter": "Filter",
+  "stalwart": "Stalwart"
 }
