@@ -13020,7 +13020,7 @@ export function useBlocksListenerSubscription(baseOptions?: Apollo.SubscriptionH
 export type BlocksListenerSubscriptionHookResult = ReturnType<typeof useBlocksListenerSubscription>;
 export type BlocksListenerSubscriptionResult = Apollo.SubscriptionResult<BlocksListenerSubscription>;
 export const BlocksDocument = gql`
-    query Blocks($limit: Int = 7, $offset: Int = 0) {
+  query Blocks($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {height: desc}) {
     height
     txs: num_txs
@@ -13030,15 +13030,16 @@ export const BlocksDocument = gql`
       validatorInfo: validator_info {
         operatorAddress: operator_address
         self_delegate_address
+        __typename
       }
-      validatorDescriptions: validator_descriptions(
-        limit: 1
-        order_by: {height: desc}
-      ) {
+      validatorDescriptions: validator_description {
         moniker
         identity
+        __typename
       }
+      __typename
     }
+    __typename
   }
 }
     `;
@@ -14475,46 +14476,40 @@ export type ValidatorUndelegationsQueryHookResult = ReturnType<typeof useValidat
 export type ValidatorUndelegationsLazyQueryHookResult = ReturnType<typeof useValidatorUndelegationsLazyQuery>;
 export type ValidatorUndelegationsQueryResult = Apollo.QueryResult<ValidatorUndelegationsQuery, ValidatorUndelegationsQueryVariables>;
 export const ValidatorsDocument = gql`
-    query Validators {
+    query Validators @cached {
   stakingPool: staking_pool(limit: 1, order_by: {height: desc}) {
     bondedTokens: bonded_tokens
+    __typename
   }
   validator {
-    validatorStatuses: validator_statuses(order_by: {height: desc}, limit: 1) {
-      status
-      jailed
+    validatorStatus: validator_status {
       height
-    }
-    validatorSigningInfos: validator_signing_infos(
-      order_by: {height: desc}
-      limit: 1
-    ) {
-      missedBlocksCounter: missed_blocks_counter
-      tombstoned
+      jailed
+      status
     }
     validatorInfo: validator_info {
       operatorAddress: operator_address
       selfDelegateAddress: self_delegate_address
+      __typename
     }
-    validatorVotingPowers: validator_voting_powers(
-      offset: 0
-      limit: 1
-      order_by: {height: desc}
-    ) {
+    validatorVotingPower: validator_voting_power {
       votingPower: voting_power
+      __typename
     }
-    validatorCommissions: validator_commissions(order_by: {height: desc}, limit: 1) {
-      commission
-    }
-    validatorSigningInfos: validator_signing_infos(
-      order_by: {height: desc}
-      limit: 1
-    ) {
-      missedBlocksCounter: missed_blocks_counter
-    }
+    __typename
   }
   slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
     params
+    __typename
+  }
+  validatorSigningInfo: validator_signing_info(order_by: {height: desc}, limit: 1) {
+    missedBlocksCounter: missed_blocks_counter
+    tombstoned
+    __typename
+  }
+  validatorCommission: validator_commission(order_by: {height: desc}, limit: 1) {
+    commission
+    __typename
   }
 }
     `;
@@ -14546,7 +14541,7 @@ export type ValidatorsQueryHookResult = ReturnType<typeof useValidatorsQuery>;
 export type ValidatorsLazyQueryHookResult = ReturnType<typeof useValidatorsLazyQuery>;
 export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, ValidatorsQueryVariables>;
 export const ValidatorAddressesDocument = gql`
-    query ValidatorAddresses {
+query ValidatorAddresses {
   validator(where: {validator_info: {operator_address: {_is_null: false}, consensus_address: {_is_null: false}, self_delegate_address: {_is_null: false}}}) {
     validatorInfo: validator_info {
       operatorAddress: operator_address
