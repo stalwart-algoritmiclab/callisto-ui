@@ -8,12 +8,7 @@
   "previewImage": "https://s3.bigdipper.live/desmos.png",
   "themes": {
     "default": "light",
-    "themeList": [
-      "dark",
-      "light",
-      "deuteranopia",
-      "tritanopia"
-    ],
+    "themeList": ["dark", "light", "deuteranopia", "tritanopia"],
     "dark": {
       "primary": {
         "main": "#FF835B",
@@ -205,66 +200,32 @@
       }
     }
   },
-  "keplr": "{\"chainId\":\"desmos-mainnet\",\"chainName\":\"Desmos\",\"chainSymbolImageUrl\":\"https://raw.githubusercontent.com/chainapsis/keplr-chain-registry/main/images/desmos-mainnet/chain.png\",\"rpc\":\"https://rpc.mainnet.desmos.network\",\"rest\":\"https://api.mainnet.desmos.network\",\"nodeProvider\":{\"name\":\"Forbole\",\"email\":\"info@forbole.com\",\"website\":\"https://www.forbole.com\"},\"bip44\":{\"coinType\":852},\"bech32Config\":{\"bech32PrefixAccAddr\":\"desmos\",\"bech32PrefixAccPub\":\"desmospub\",\"bech32PrefixValAddr\":\"desmosvaloper\",\"bech32PrefixValPub\":\"desmosvaloperpub\",\"bech32PrefixConsAddr\":\"desmosvalcons\",\"bech32PrefixConsPub\":\"desmosvalconspub\"},\"currencies\":[{\"coinDenom\":\"DSM\",\"coinMinimalDenom\":\"udsm\",\"coinDecimals\":6,\"coinGeckoId\":\"desmos\"}],\"feeCurrencies\":[{\"coinDenom\":\"DSM\",\"coinMinimalDenom\":\"udsm\",\"coinDecimals\":6,\"coinGeckoId\":\"desmos\",\"gasPriceStep\":{\"low\":0.01,\"average\":0.03,\"high\":0.05}}],\"stakeCurrency\":{\"coinDenom\":\"DSM\",\"coinMinimalDenom\":\"udsm\",\"coinDecimals\":6,\"coinGeckoId\":\"desmos\"},\"features\":[]}",
+  "keplr": "{\"chainId\":\"stwart_testnet\",\"chainName\":\"Stwart\",\"chainSymbolImageUrl\":\"https://raw.githubusercontent.com/chainapsis/keplr-chain-registry/main/images/desmos-mainnet/chain.png\",\"rpc\":\"https://rpc.testnet.stalwart.dev\",\"rest\":\"https://api.testnet.stalwart.dev\",\"nodeProvider\":{\"name\":\"Forbole\",\"email\":\"info@forbole.com\",\"website\":\"https://www.forbole.com\"},\"bip44\":{\"coinType\":852},\"bech32Config\":{\"bech32PrefixAccAddr\":\"stwart\",\"bech32PrefixAccPub\":\"stwart\",\"bech32PrefixValAddr\":\"stwart\",\"bech32PrefixValPub\":\"stwart\",\"bech32PrefixConsAddr\":\"stwart\",\"bech32PrefixConsPub\":\"stwart\"},\"currencies\":[{\"coinDenom\":\"STW\",\"coinMinimalDenom\":\"stw\",\"coinDecimals\":8,\"coinGeckoId\":\"stwart\"}],\"feeCurrencies\":[{\"coinDenom\":\"STW\",\"coinMinimalDenom\":\"stw\",\"coinDecimals\":8,\"coinGeckoId\":\"stwart\",\"gasPriceStep\":{\"low\":0.01,\"average\":0.03,\"high\":0.05}}],\"stakeCurrency\":{\"coinDenom\":\"STW\",\"coinMinimalDenom\":\"stw\",\"coinDecimals\":8,\"coinGeckoId\":\"stwart\"},\"features\":[]}",
   "chains": [
     {
-      "network": "desmos-mainnet",
-      "chainType": "Mainnet",
+      "network": "stwart_testnet",
+      "chainType": "Testnet",
       "genesis": {
-        "time": "2021-08-31T16:15:00",
+        "time": "2024-05-07T15:09:50",
         "height": 1
       },
       "prefix": {
-        "consensus": "desmosvalcons",
-        "validator": "desmosvaloper",
-        "account": "desmos"
+        "consensus": "stwart",
+        "validator": "stwart",
+        "account": "stwart"
       },
-      "primaryTokenUnit": "udsm",
-      "votingPowerTokenUnit": "udsm",
+      "primaryTokenUnit": "stw",
+      "votingPowerTokenUnit": "stw",
       "tokenUnits": {
-        "udsm": {
-          "display": "dsm",
-          "exponent": 6
+        "stw": {
+          "display": "stw",
+          "exponent": 8
         }
       },
       "endpoints": {
-        "graphql": "https://gql.desmos.forbole.com/v1/graphql",
-        "graphqlWebsocket": "wss://gql.desmos.forbole.com/v1/graphql",
-        "publicRpcWebsocket": "wss://rpc.desmos.forbole.com/websocket"
-      },
-      "marketing": {
-        "matomoURL": "https://analytics.bigdipper.live",
-        "matomoSiteID": "8"
-      }
-    },
-    {
-      "network": "morpheus-apollo-3",
-      "chainType": "Testnet",
-      "genesis": {
-        "time": "2022-10-24T08:00:00",
-        "height": 7942286
-      },
-      "prefix": {
-        "consensus": "desmosvalcons",
-        "validator": "desmosvaloper",
-        "account": "desmos"
-      },
-      "primaryTokenUnit": "udaric",
-      "votingPowerTokenUnit": "udaric",
-      "tokenUnits": {
-        "udaric": {
-          "display": "daric",
-          "exponent": 6
-        }
-      },
-      "endpoints": {
-        "graphql": "https://gql-morpheus.desmos.forbole.com/v1/graphql",
-        "graphqlWebsocket": "wss://gql-morpheus.desmos.forbole.com/v1/graphql",
-        "publicRpcWebsocket": "wss://rpc-morpheus.desmos.forbole.com/websocket"
-      },
-      "marketing": {
-        "matomoURL": "https://analytics.bigdipper.live",
-        "matomoSiteID": "8"
+        "graphql": "https://hasura-testnet.stalwart.dev/v1/graphql",
+        "graphqlWebsocket": "wss://hasura-testnet.stalwart.dev/v1/graphql",
+        "publicRpcWebsocket": "wss://rpc.testnet.stalwart.dev/websocket"
       }
     }
   ]

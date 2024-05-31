@@ -1,11 +1,15 @@
-import numeral from 'numeral';
-import * as R from 'ramda';
-import { useCallback, useEffect, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import useShallowMemo from '@/hooks/useShallowMemo';
 import { hexToBech32 } from '@/utils/hex_to_bech32';
 
+import numeral from 'numeral';
+
+import * as R from 'ramda';
+
+import { useCallback, useEffect, useState } from 'react';
+
 const { endpoints, prefix } = chainConfig();
+console.log('🚀 ~ prefix:', prefix);
 
 /* Checking if the code is running on the server or the client. */
 const ssrMode = typeof window === 'undefined';
