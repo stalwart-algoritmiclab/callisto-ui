@@ -33,3 +33,17 @@ export { mergeStateChange } from '@/utils/merge_state_change';
 export { isValidAddress, toValidatorAddress } from '@/utils/prefix_convert';
 export { replaceNaN } from '@/utils/replace_nan';
 export { nanoToSeconds, secondsToDays } from '@/utils/time';
+export {
+  useBalance,
+  useRatesAll,
+  useCapitalisationTokens,
+  useGetModulesAddress,
+} from '@/utils/market_cap';
+
+export {
+  convertCoinFromSatoshi,
+  convertCoinFromCustomDecimal,
+  convertCoinToSatoshi,
+  convertCoinToCustomDecimal,
+  roundToFixed,
+} from '@/utils/formatting';

@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "**/node_modules/*",
+    "**/out/*",
+    "**/.next/*",
+    "**/dist/*",
+    "**/lib/*",
+    "**/src/graphql/*"
+  ],
+  "plugins": ["prettier"],
+  "extends": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/no-unresolved": [2, { "caseSensitive": false }]
+  }
+}

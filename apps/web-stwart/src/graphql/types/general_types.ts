@@ -12770,17 +12770,23 @@ export const ActiveValidatorCountDocument = gql`
   activeTotal: validator_status_aggregate(where: {status: {_eq: 3}}) {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
   inactiveTotal: validator_status_aggregate(where: {status: {_neq: 3}}) {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
   total: validator_status_aggregate {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
 }
     `;
@@ -12909,12 +12915,10 @@ export function useLatestBlockHeightListenerSubscription(baseOptions?: Apollo.Su
 export type LatestBlockHeightListenerSubscriptionHookResult = ReturnType<typeof useLatestBlockHeightListenerSubscription>;
 export type LatestBlockHeightListenerSubscriptionResult = Apollo.SubscriptionResult<LatestBlockHeightListenerSubscription>;
 export const AverageBlockTimeDocument = gql`
-    query AverageBlockTime {
-  averageBlockTime: average_block_time_per_hour(
-    limit: 1
-    order_by: {height: desc}
-  ) {
+ query AverageBlockTime {
+  averageBlockTime: average_block_time_per_hour(limit: 1, order_by: {height: desc}) {
     averageTime: average_time
+    __typename
   }
 }
     `;
@@ -12946,9 +12950,10 @@ export type AverageBlockTimeQueryHookResult = ReturnType<typeof useAverageBlockT
 export type AverageBlockTimeLazyQueryHookResult = ReturnType<typeof useAverageBlockTimeLazyQuery>;
 export type AverageBlockTimeQueryResult = Apollo.QueryResult<AverageBlockTimeQuery, AverageBlockTimeQueryVariables>;
 export const LatestBlockTimestampDocument = gql`
-    query LatestBlockTimestamp($offset: Int = 0) {
+ query LatestBlockTimestamp($offset: Int = 0) {
   block: block(order_by: {height: desc}, limit: 1, offset: $offset) {
     timestamp
+    __typename
   }
 }
     `;
@@ -13073,10 +13078,11 @@ export type BlocksQueryHookResult = ReturnType<typeof useBlocksQuery>;
 export type BlocksLazyQueryHookResult = ReturnType<typeof useBlocksLazyQuery>;
 export type BlocksQueryResult = Apollo.QueryResult<BlocksQuery, BlocksQueryVariables>;
 export const ChainIdDocument = gql`
-    query ChainId {
+ query ChainId {
   genesis(limit: 1, order_by: {time: desc}) {
     chainId: chain_id
     time
+    __typename
   }
 }
     `;
@@ -13108,25 +13114,31 @@ export type ChainIdQueryHookResult = ReturnType<typeof useChainIdQuery>;
 export type ChainIdLazyQueryHookResult = ReturnType<typeof useChainIdLazyQuery>;
 export type ChainIdQueryResult = Apollo.QueryResult<ChainIdQuery, ChainIdQueryVariables>;
 export const MarketDataDocument = gql`
-    query MarketData($denom: String) {
+query MarketData($denom: String) {
   communityPool: community_pool(order_by: {height: desc}, limit: 1) {
     coins
+    __typename
   }
   inflation: inflation(order_by: {height: desc}, limit: 1) {
     value
+    __typename
   }
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
     marketCap: market_cap
     price
+    __typename
   }
   supply {
     coins
+    __typename
   }
   bondedTokens: staking_pool(order_by: {height: desc}, limit: 1) {
     bonded_tokens
+    __typename
   }
   distributionParams: distribution_params {
     params
+    __typename
   }
 }
     `;
@@ -13159,11 +13171,12 @@ export type MarketDataQueryHookResult = ReturnType<typeof useMarketDataQuery>;
 export type MarketDataLazyQueryHookResult = ReturnType<typeof useMarketDataLazyQuery>;
 export type MarketDataQueryResult = Apollo.QueryResult<MarketDataQuery, MarketDataQueryVariables>;
 export const MessageTypesDocument = gql`
-    query MessageTypes {
+ query MessageTypes {
   msgTypes: message_type {
     type
     module
     label
+    __typename
   }
 }
     `;
@@ -13279,9 +13292,7 @@ export type MessagesByTypesListenerSubscriptionHookResult = ReturnType<typeof us
 export type MessagesByTypesListenerSubscriptionResult = Apollo.SubscriptionResult<MessagesByTypesListenerSubscription>;
 export const MessagesByTypesDocument = gql`
     query MessagesByTypes($types: _text = "{}", $limit: bigint = 7, $offset: bigint = 0) {
-  messagesByTypes: messages_by_type(
-    args: {types: $types, limit: $limit, offset: $offset}
-  ) {
+  messagesByTypes: messages_by_type(args: {types: $types, limit: $limit, offset: $offset}) {
     transaction {
       height
       hash
@@ -13291,8 +13302,11 @@ export const MessagesByTypesDocument = gql`
       block {
         height
         timestamp
+        __typename
       }
+      __typename
     }
+    __typename
   }
 }
     `;
@@ -13383,9 +13397,7 @@ export const OnlineVotingPowerDocument = gql`
       count
     }
   }
-  validatorVotingPowerAggregate: validator_voting_power_aggregate(
-    where: {validator: {validator_statuses: {status: {_eq: 3}}}}
-  ) {
+  validatorVotingPowerAggregate: validator_voting_power_aggregate(where: {validator: {validator_status: {status: {_eq: 3}}}}) {
     aggregate {
       sum {
         votingPower: voting_power
@@ -13431,20 +13443,22 @@ export const ParamsDocument = gql`
     query Params {
   stakingParams: staking_params(limit: 1, order_by: {height: desc}) {
     params
+    __typename
   }
   slashingParams: slashing_params(limit: 1, order_by: {height: desc}) {
     params
+    __typename
   }
   mintParams: mint_params(limit: 1, order_by: {height: desc}) {
     params
+    __typename
   }
   distributionParams: distribution_params(limit: 1, order_by: {height: desc}) {
     params
+    __typename
   }
   govParams: gov_params(limit: 1, order_by: {height: desc}) {
-    depositParams: deposit_params
-    tallyParams: tally_params
-    votingParams: voting_params
+    __typename
   }
 }
     `;
@@ -13665,11 +13679,14 @@ export const ProposalsDocument = gql`
     proposalId: id
     status
     description
+    __typename
   }
   total: proposal_aggregate {
     aggregate {
       count
+      __typename
     }
+    __typename
   }
 }
     `;
@@ -13737,14 +13754,11 @@ export function useTokenPriceListenerSubscription(baseOptions?: Apollo.Subscript
 export type TokenPriceListenerSubscriptionHookResult = ReturnType<typeof useTokenPriceListenerSubscription>;
 export type TokenPriceListenerSubscriptionResult = Apollo.SubscriptionResult<TokenPriceListenerSubscription>;
 export const TokenPriceHistoryDocument = gql`
-    query TokenPriceHistory($denom: String, $limit: Int = 10) {
-  tokenPrice: token_price_history(
-    where: {unit_name: {_eq: $denom}}
-    limit: $limit
-    order_by: {timestamp: desc}
-  ) {
+ query TokenPriceHistory($denom: String, $limit: Int = 10) {
+  tokenPrice: token_price_history(where: {unit_name: {_eq: $denom}}, limit: $limit, order_by: {timestamp: desc}) {
     price
     timestamp
+    __typename
   }
 }
     `;
@@ -13781,13 +13795,16 @@ export const TokenomicsDocument = gql`
     query Tokenomics {
   stakingParams: staking_params(limit: 1) {
     params
+    __typename
   }
   stakingPool: staking_pool(order_by: {height: desc}, limit: 1) {
     bonded: bonded_tokens
     unbonded: not_bonded_tokens
+    __typename
   }
   supply: supply(order_by: {height: desc}, limit: 1) {
     coins
+    __typename
   }
 }
     `;
@@ -14158,35 +14175,29 @@ export type ValidatorSigningInfosLazyQueryHookResult = ReturnType<typeof useVali
 export type ValidatorSigningInfosQueryResult = Apollo.QueryResult<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>;
 export const ValidatorInfoDocument = gql`
     query ValidatorInfo($address: String) {
-  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}}) {
     validatorInfo: validator_info {
       operatorAddress: operator_address
       selfDelegateAddress: self_delegate_address
       maxRate: max_rate
     }
-    validatorDescriptions: validator_descriptions(
-      order_by: {height: desc}
-      limit: 1
-    ) {
+    validatorDescriptions: validator_description {
       details
       website
     }
-    validatorStatuses: validator_statuses(order_by: {height: desc}, limit: 1) {
+    validatorStatuses: validator_status {
       status
       jailed
       height
     }
-    validatorSigningInfos: validator_signing_infos(
-      order_by: {height: desc}
-      limit: 1
-    ) {
+  }
+   validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
       missedBlocksCounter: missed_blocks_counter
       tombstoned
     }
-    validatorCommissions: validator_commissions(order_by: {height: desc}, limit: 1) {
+    validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
       commission
     }
-  }
   slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
     params
   }
@@ -14258,17 +14269,13 @@ export type ValidatorCommissionQueryHookResult = ReturnType<typeof useValidatorC
 export type ValidatorCommissionLazyQueryHookResult = ReturnType<typeof useValidatorCommissionLazyQuery>;
 export type ValidatorCommissionQueryResult = Apollo.QueryResult<ValidatorCommissionQuery, ValidatorCommissionQueryVariables>;
 export const ValidatorVotingPowersDocument = gql`
-    query ValidatorVotingPowers($address: String) {
-  validator(where: {validator_info: {operator_address: {_eq: $address}}}) {
-    validatorVotingPowers: validator_voting_powers(
-      offset: 0
-      limit: 1
-      order_by: {height: desc}
-    ) {
+   query ValidatorVotingPowers($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_voting_power: {}, validator_status: {}}) {
+    validatorVotingPowers: validator_voting_power {
       height
       votingPower: voting_power
     }
-    validatorStatuses: validator_statuses(order_by: {height: desc}, limit: 1) {
+    validatorStatuses: validator_status {
       status
     }
   }

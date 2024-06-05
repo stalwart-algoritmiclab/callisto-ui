@@ -1,7 +1,4 @@
-import Typography from '@mui/material/Typography';
 import useAppTranslation from '@/hooks/useAppTranslation';
-import numeral from 'numeral';
-import { FC } from 'react';
 import Avatar from '@/components/avatar';
 import Box from '@/components/box';
 import Connections from '@/components/desmos_profile/components/connections';
@@ -10,12 +7,18 @@ import useStyles from '@/components/desmos_profile/styles';
 import Markdown from '@/components/markdown';
 import Loading from '@/components/loading';
 
+import Typography from '@mui/material/Typography';
+
+import numeral from 'numeral';
+
+import { FC } from 'react';
+
 type DesmosProfileProps = {
   className?: string;
   loading?: boolean;
 } & Omit<DesmosProfile, 'address'>;
 
-const DesmosProfile: FC<DesmosProfileProps> = props => {
+const DesmosProfile: FC<DesmosProfileProps> = (props) => {
   const { t } = useAppTranslation('accounts');
   const { classes, cx } = useStyles({ coverUrl: props.coverUrl });
   const { connectionsOpen, handleConnectionsClose, handleConnectionsOpen } = useDesmosProfile();

@@ -9,10 +9,16 @@ import {
   OPEN_GRAPH_SEO,
   TWITTER_SEO,
 } from '@/screens/app/utils';
-import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import useAppTranslation from '@/hooks/useAppTranslation';
+
+import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
+
+import { QueryClientProvider } from '@tanstack/react-query';
+
 import { DefaultSeo } from 'next-seo';
+
 import { RecoilRoot } from 'recoil';
+import queryClient from '@/graphql/useReactQuery';
 
 const { title } = chainConfig();
 
@@ -40,7 +46,9 @@ function MyApp(props: MainProps<{ initialApolloState?: NormalizedCacheObject }>)
         additionalMetaTags={ADDITIONAL_META_TAGS}
       />
       <ApolloProvider client={apolloClient}>
-        <Main {...props} />
+        <QueryClientProvider client={queryClient}>
+          <Main {...props} />
+        </QueryClientProvider>
       </ApolloProvider>
     </RecoilRoot>
   );

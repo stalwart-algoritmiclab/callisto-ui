@@ -11,7 +11,10 @@
         "NEXT_PUBLIC_GRAPHQL_WS",
         "NEXT_PUBLIC_MATOMO_SITE_ID",
         "NEXT_PUBLIC_MATOMO_URL",
-        "NEXT_PUBLIC_RPC_WEBSOCKET"
+        "NEXT_PUBLIC_RPC_WEBSOCKET",
+        "NEXT_API_COSMOS",
+        "NEXT_WS_TENDERMINT",
+        "NEXT_ADDRESS_PREFIX"
       ]
     },
     "clean": {
@@ -67,7 +70,10 @@
     "SENTRY_ORG",
     "SENTRY_URL",
     "SITE_URL",
-    "VERCEL"
+    "VERCEL",
+    "NEXT_API_COSMOS",
+    "NEXT_WS_TENDERMINT",
+    "NEXT_ADDRESS_PREFIX"
   ],
   "globalDependencies": [
     ".env",

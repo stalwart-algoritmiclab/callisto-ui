@@ -1,9 +1,12 @@
-import numeral from 'numeral';
-import * as R from 'ramda';
-import { useCallback, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import { OnlineVotingPowerQuery, useOnlineVotingPowerQuery } from '@/graphql/types/general_types';
 import { formatToken } from '@/utils/format_token';
+
+import numeral from 'numeral';
+
+import * as R from 'ramda';
+
+import { useCallback, useState } from 'react';
 
 const { votingPowerTokenUnit } = chainConfig();
 
@@ -20,7 +23,10 @@ const initialState: OnlineVotingPowerState = {
 };
 
 const formatOnlineVotingPower = (data: OnlineVotingPowerQuery) => {
-  const votingPower = data?.validatorVotingPowerAggregate?.aggregate?.sum?.votingPower ?? 0;
+  const votingPower =
+    numeral(data?.validatorVotingPowerAggregate?.aggregate?.sum?.votingPower)
+      .divide(Math.pow(10, Number(process.env.NEXT_PUBLIC_DECIMAL)))
+      .value() ?? 0;
   const bonded = data?.stakingPool?.[0]?.bonded ?? 0;
   const activeValidators = data?.activeTotal?.aggregate?.count ?? 0;
 
