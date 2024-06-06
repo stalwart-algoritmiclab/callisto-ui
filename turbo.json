@@ -14,7 +14,11 @@
         "NEXT_PUBLIC_RPC_WEBSOCKET",
         "NEXT_API_COSMOS",
         "NEXT_WS_TENDERMINT",
-        "NEXT_ADDRESS_PREFIX"
+        "NEXT_ADDRESS_PREFIX",
+        "NEXT_PUBLIC_API_COSMOS",
+        "NEXT_PUBLIC_WS_TENDERMINT",
+        "NEXT_PUBLIC_DECIMAL",
+        "NEXT_PUBLIC_EXCHANGE_MODULE_ADDRESS"
       ]
     },
     "clean": {
