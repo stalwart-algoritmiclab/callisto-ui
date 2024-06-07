@@ -3,7 +3,8 @@
   "title": "Stalwart Block Explorer",
   "extra": {
     "profile": true,
-    "graphqlWs": false
+    "graphqlWs": false,
+    "votingPowerExponent": 8
   },
   "previewImage": "https://gasallin.io/img/bigdipper.png",
   "themes": {

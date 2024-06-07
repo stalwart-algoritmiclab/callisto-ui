@@ -20,6 +20,7 @@ const ValidatorDetails = () => {
   const { t } = useAppTranslation('validators');
   const { classes } = useStyles();
   const { state, loading } = useValidatorProfileDetails();
+  //TODO validator details
   const { exists, desmosProfile, operatorAddress } = state;
   const { state: validatorOverviewState, loading: validatorOverviewLoading } =
     useValidatorOverviewDetails();
@@ -37,7 +38,7 @@ const ValidatorDetails = () => {
         <LoadAndExist loading={loading} exists={state.exists}>
           <div>
             <span className={classes.root}>
-              {exists && desmosProfile ? (
+              {/* {exists && desmosProfile ? (
                 <DesmosProfile className={classes.profile} {...desmosProfile} loading={loading} />
               ) : (
                 <Profile
@@ -45,7 +46,7 @@ const ValidatorDetails = () => {
                   profile={validatorOverviewState.overview}
                   loading={loading}
                 />
-              )}
+              )} */}
               {!loading ? (
                 <>
                   <ValidatorOverview

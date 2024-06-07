@@ -1,6 +1,3 @@
-import { useRouter } from 'next/router';
-import * as R from 'ramda';
-import { useCallback, useEffect, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import {
   useValidatorVotingPowersQuery,
@@ -20,6 +17,12 @@ import {
 } from '@/screens/validator_details/types';
 import { formatToken } from '@/utils/format_token';
 import { getValidatorCondition } from '@/utils/get_validator_condition';
+
+import { useRouter } from 'next/router';
+
+import * as R from 'ramda';
+
+import { useCallback, useEffect, useState } from 'react';
 
 const { extra, votingPowerTokenUnit } = chainConfig();
 
@@ -74,7 +77,7 @@ export const useValidatorVotingPowerDetails = () => {
 
   const handleSetState = useCallback(
     (stateChange: (prevState: ValidatorVPState) => ValidatorVPState) => {
-      setState(prevState => {
+      setState((prevState) => {
         const newState = stateChange(prevState);
         return R.equals(prevState, newState) ? prevState : newState;
       });
@@ -89,8 +92,8 @@ export const useValidatorVotingPowerDetails = () => {
     variables: {
       address: router.query.address as string,
     },
-    onCompleted: data => {
-      handleSetState(prevState => ({ ...prevState, ...formatValidatorVotingPower(data) }));
+    onCompleted: (data) => {
+      handleSetState((prevState) => ({ ...prevState, ...formatValidatorVotingPower(data) }));
     },
   });
 
@@ -103,7 +106,7 @@ export const useValidatorOverviewDetails = () => {
 
   const handleSetState = useCallback(
     (stateChange: (prevState: ValidatorOverviewState) => ValidatorOverviewState) => {
-      setState(prevState => {
+      setState((prevState) => {
         const newState = stateChange(prevState);
         return R.equals(prevState, newState) ? prevState : newState;
       });
@@ -118,8 +121,8 @@ export const useValidatorOverviewDetails = () => {
     variables: {
       address: router.query.address as string,
     },
-    onCompleted: data => {
-      handleSetState(prevState => ({ ...prevState, ...formatValidatorOverview(data) }));
+    onCompleted: (data) => {
+      handleSetState((prevState) => ({ ...prevState, ...formatValidatorOverview(data) }));
     },
   });
 
@@ -132,7 +135,7 @@ export const useValidatorProfileDetails = () => {
 
   const handleSetState = useCallback(
     (stateChange: (prevState: ValidatorProfileState) => ValidatorProfileState) => {
-      setState(prevState => {
+      setState((prevState) => {
         const newState = stateChange(prevState);
         return R.equals(prevState, newState) ? prevState : newState;
       });
@@ -147,8 +150,8 @@ export const useValidatorProfileDetails = () => {
     variables: {
       address: router.query.address as string,
     },
-    onCompleted: data => {
-      handleSetState(prevState => ({ ...prevState, ...formatValidatorAddress(data) }));
+    onCompleted: (data) => {
+      handleSetState((prevState) => ({ ...prevState, ...formatValidatorAddress(data) }));
     },
   });
 
@@ -161,7 +164,7 @@ export const useValidatorProfileDetails = () => {
   });
   useEffect(
     () =>
-      setState(prevState => ({
+      setState((prevState) => ({
         ...prevState,
         desmosProfile: dataDesmosProfile?.[0],
         loading: loadingDesmosProfile,
@@ -234,8 +237,8 @@ function formatValidatorOverview(data: ValidatorInfoQuery): Partial<ValidatorOve
   const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
 
   const status: StatusType = {
-    status: data.validator[0]?.validatorStatuses?.[0]?.status ?? 3,
-    jailed: data.validator[0]?.validatorStatuses?.[0]?.jailed ?? false,
+    status: data.validator[0]?.validatorStatuses?.status ?? 3,
+    jailed: data.validator[0]?.validatorStatuses?.jailed ?? false,
     tombstoned: data.validator[0]?.validatorSigningInfos?.[0]?.tombstoned ?? false,
     commission: data.validator[0]?.validatorCommissions?.[0]?.commission ?? 0,
     condition,

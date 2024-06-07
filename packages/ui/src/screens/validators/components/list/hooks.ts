@@ -1,7 +1,3 @@
-import Big from 'big.js';
-import numeral from 'numeral';
-import * as R from 'ramda';
-import { SyntheticEvent, useCallback, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import { useValidatorsQuery, ValidatorsQuery } from '@/graphql/types/general_types';
 import { SlashingParams } from '@/models';
@@ -12,6 +8,14 @@ import type {
 } from '@/screens/validators/components/list/types';
 import { formatToken } from '@/utils/format_token';
 import { getValidatorCondition } from '@/utils/get_validator_condition';
+
+import Big from 'big.js';
+
+import numeral from 'numeral';
+
+import * as R from 'ramda';
+
+import { SyntheticEvent, useCallback, useState } from 'react';
 
 const { extra, votingPowerTokenUnit } = chainConfig();
 
@@ -31,23 +35,23 @@ const formatValidators = (data: ValidatorsQuery): Partial<ValidatorsState> => {
     .filter((x) => x.validatorInfo)
     .map((x) => {
       const votingPower =
-        (x?.validatorVotingPowers?.[0]?.votingPower ?? 0) / 10 ** (extra.votingPowerExponent ?? 0);
+        (x?.validatorVotingPower?.votingPower ?? 0) / 10 ** (extra.votingPowerExponent ?? 0);
       const votingPowerPercent = votingPowerOverall
         ? numeral((votingPower / votingPowerOverall) * 100).value()
         : 0;
 
-      const missedBlockCounter = x?.validatorSigningInfos?.[0]?.missedBlocksCounter ?? 0;
+      const missedBlockCounter = data?.validatorSigningInfos?.[0]?.missedBlocksCounter ?? 0;
       const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
 
       return {
         validator: x.validatorInfo?.operatorAddress ?? '',
         votingPower: votingPower ?? 0,
         votingPowerPercent: votingPowerPercent ?? 0,
-        commission: (x?.validatorCommissions?.[0]?.commission ?? 0) * 100,
+        commission: (data?.validatorCommissions?.[0]?.commission ?? 0) * 100,
         condition,
-        status: x?.validatorStatuses?.[0]?.status ?? 0,
-        jailed: x?.validatorStatuses?.[0]?.jailed ?? false,
-        tombstoned: x?.validatorSigningInfos?.[0]?.tombstoned ?? false,
+        status: x?.validatorStatus?.status ?? 0,
+        jailed: x?.validatorStatus?.jailed ?? false,
+        tombstoned: data?.validatorSigningInfos?.[0]?.tombstoned ?? false,
       };
     });
 

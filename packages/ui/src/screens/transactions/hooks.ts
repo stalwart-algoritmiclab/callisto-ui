@@ -1,5 +1,3 @@
-import * as R from 'ramda';
-import { useState, useEffect, useCallback } from 'react';
 import { convertMsgsToModels } from '@/components/msg/utils';
 import {
   useMessagesByTypesListenerSubscription,
@@ -8,8 +6,13 @@ import {
 } from '@/graphql/types/general_types';
 import type { TransactionsState } from '@/screens/transactions/types';
 import { convertMsgType } from '@/utils/convert_msg_type';
-import { useRecoilValue } from 'recoil';
 import { readFilter } from '@/recoil/transactions_filter';
+
+import * as R from 'ramda';
+
+import { useState, useEffect, useCallback } from 'react';
+
+import { useRecoilValue } from 'recoil';
 
 // This is a bandaid as it can get extremely
 // expensive if there is too much data
@@ -91,6 +94,7 @@ export const useTransactions = () => {
       types: msgTypes ?? '{}',
     },
     onData: (data) => {
+      console.log('🚀 ~ useTransactions ~ data:', data);
       const newItems = uniqueAndSort([
         ...(data?.data?.data ? formatTransactions(data.data.data) : []),
         ...state.items,
@@ -117,6 +121,7 @@ export const useTransactions = () => {
       handleSetState((prevState) => ({ ...prevState, loading: false }));
     },
     onCompleted: (data) => {
+      console.log('🚀 ~ useTransactions ~ data:', data);
       const itemsLength = data.messagesByTypes.length;
       const newItems = uniqueAndSort([...state.items, ...(formatTransactions(data) ?? [])]);
       handleSetState((prevState) => ({
