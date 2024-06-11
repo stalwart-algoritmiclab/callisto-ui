@@ -24,7 +24,10 @@ For Hasura and BdJuno issues please report it here [https://github.com/forbole/b
 
 ## License
 
-Read our license at [https://raw.githubusercontent.com/forbole/big-dipper-2.0-cosmos/master/LICENSE](https://raw.githubusercontent.com/forbole/big-dipper-2.0-cosmos/master/LICENSE)
+Business Source License 1.1 applies.
+Where explicitly indicated, specific components are distributed under different licenses.
+
+The source is distributed under the license available at [https://raw.githubusercontent.com/forbole/big-dipper-2.0-cosmos/master/LICENSE](https://raw.githubusercontent.com/forbole/big-dipper-2.0-cosmos/master/LICENSE)
 
 ## Ledger and Transaction Support
 
