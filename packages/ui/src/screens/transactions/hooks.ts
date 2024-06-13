@@ -94,7 +94,6 @@ export const useTransactions = () => {
       types: msgTypes ?? '{}',
     },
     onData: (data) => {
-      console.log('🚀 ~ useTransactions ~ data:', data);
       const newItems = uniqueAndSort([
         ...(data?.data?.data ? formatTransactions(data.data.data) : []),
         ...state.items,
@@ -121,7 +120,6 @@ export const useTransactions = () => {
       handleSetState((prevState) => ({ ...prevState, loading: false }));
     },
     onCompleted: (data) => {
-      console.log('🚀 ~ useTransactions ~ data:', data);
       const itemsLength = data.messagesByTypes.length;
       const newItems = uniqueAndSort([...state.items, ...(formatTransactions(data) ?? [])]);
       handleSetState((prevState) => ({

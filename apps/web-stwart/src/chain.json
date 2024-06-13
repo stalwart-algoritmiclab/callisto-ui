@@ -211,8 +211,8 @@
         "height": 1
       },
       "prefix": {
-        "consensus": "stwart",
-        "validator": "stwart",
+        "consensus": "stwartvalcons",
+        "validator": "stwartvaloper",
         "account": "stwart"
       },
       "primaryTokenUnit": "stw",
@@ -220,6 +220,10 @@
       "tokenUnits": {
         "stw": {
           "display": "stw",
+          "exponent": 8
+        },
+        "ssc": {
+          "display": "ssc",
           "exponent": 8
         }
       },

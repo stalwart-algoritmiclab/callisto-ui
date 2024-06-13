@@ -1,5 +1,6 @@
-import * as R from 'ramda';
 import type { Categories } from '@/models/msg/types';
+
+import * as R from 'ramda';
 
 class MsgSend {
   public category: Categories;
@@ -24,6 +25,7 @@ class MsgSend {
   }
 
   static fromJson(json: object): MsgSend {
+    //TODO add decimal
     return {
       category: 'bank',
       json,

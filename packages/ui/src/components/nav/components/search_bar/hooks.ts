@@ -9,9 +9,13 @@ import {
 } from '@/utils/go_to_page';
 import { isValidAddress } from '@/utils/prefix_convert';
 import type { TFunction } from '@/hooks/useAppTranslation';
+
 import { useRouter } from 'next/router';
+
 import numeral from 'numeral';
+
 import { toast } from 'react-toastify';
+
 import { useRecoilCallback } from 'recoil';
 
 const { extra, prefix } = chainConfig();

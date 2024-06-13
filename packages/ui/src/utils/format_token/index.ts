@@ -1,6 +1,8 @@
-import Big from 'big.js';
-import numeral from 'numeral';
 import chainConfig from '@/chainConfig';
+
+import Big from 'big.js';
+
+import numeral from 'numeral';
 
 const { tokenUnits } = chainConfig();
 
@@ -11,7 +13,11 @@ const { tokenUnits } = chainConfig();
  * @param denom the denom to convert the amount in to
  * @returns TokenUnit
  */
-export const formatToken = (value: number | string | null | undefined, denom = ''): TokenUnit => {
+export const formatToken = (
+  value: number | string | null | undefined,
+  denom = '',
+  decimal = 0
+): TokenUnit => {
   const selectedDenom = tokenUnits?.[denom];
 
   if (typeof value !== 'string' && typeof value !== 'number') {
@@ -26,15 +32,26 @@ export const formatToken = (value: number | string | null | undefined, denom = '
     value,
     displayDenom: denom,
     baseDenom: denom,
-    exponent: selectedDenom?.exponent ?? 0,
+    exponent: selectedDenom?.exponent ?? decimal,
   };
+
+  if (decimal !== 0) {
+    const ratio = Big(10 ** decimal);
+    results.value = !ratio.eq(0) ? Big(value).div(ratio).toFixed(decimal) : '';
+    return results;
+  }
 
   if (!selectedDenom) {
     return results;
   }
 
-  const ratio = Big(10 ** selectedDenom.exponent);
-  results.value = !ratio.eq(0) ? Big(value).div(ratio).toFixed(selectedDenom.exponent) : '';
+  const ratio = Big(10 ** selectedDenom?.exponent ?? decimal);
+  results.value = !ratio.eq(0)
+    ? Big(value)
+        .div(ratio)
+        .toFixed(selectedDenom?.exponent ?? decimal)
+    : '';
+
   results.displayDenom = selectedDenom.display;
   return results;
 };

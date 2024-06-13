@@ -410,6 +410,18 @@ const customTypeToModel = {
     tagTheme: 'four',
     tagDisplay: 'txUnblockUserLabel',
   },
+  // '/stwartchain.exchanger.MsgExchange': {
+  //   model: MODELS.MsgUnblockUser,
+  //   content: COMPONENTS.UnBlockUser,
+  //   tagTheme: 'four',
+  //   tagDisplay: 'txUnblockUserLabel',
+  // },
+  // '/stwartchain.faucet.MsgIssue': {
+  // model: MODELS.MsgUnblockUser,
+  // content: COMPONENTS.UnBlockUser,
+  // tagTheme: 'four',
+  // tagDisplay: 'txFaucetLabel',
+  // },
 };
 type CustomTypeToModel = typeof customTypeToModel;
 
@@ -447,7 +459,7 @@ export const getMessageModelByType = (type: string): Data['model'] => {
  */
 export const getMessageByType = <TMessage,>(message: TMessage, viewRaw: boolean, t: TFunction) => {
   const { type } = (message as { type: string }) ?? {};
-
+  //TODO formatting messages
   type ResultType = {
     content: FC<{ message: TMessage }>;
     tagDisplay: Data['tagDisplay'];
@@ -459,6 +471,16 @@ export const getMessageByType = <TMessage,>(message: TMessage, viewRaw: boolean,
     tagDisplay: 'txUnknownLabel',
     tagTheme: 'zero',
   };
+  if (type === '/stwartchain.faucet.MsgIssue') {
+    results.content = COMPONENTS.Unknown as unknown as FC<{ message: TMessage }>;
+    results.tagDisplay = 'txFaucetLabel';
+    results.tagTheme = 'four';
+  }
+  if (type === '/stwartchain.exchanger.MsgExchange') {
+    results.content = COMPONENTS.Unknown as unknown as FC<{ message: TMessage }>;
+    results.tagDisplay = 'txExchangeLabel';
+    results.tagTheme = 'four';
+  }
 
   const data = getDataByType(type);
 
