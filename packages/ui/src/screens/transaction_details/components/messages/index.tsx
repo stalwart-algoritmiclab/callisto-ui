@@ -39,7 +39,7 @@ const ListItem: FC<ListItemProps> = ({
           <div className={classes.tags}>{formattedItem.type}</div>
           <span className="msg">{formattedItem.message}</span>
         </div>
-        {!isLast && <Divider />}
+        {/* {!isLast && <Divider />} */}
       </div>
     </div>
   );

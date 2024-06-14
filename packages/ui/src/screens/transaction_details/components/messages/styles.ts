@@ -4,6 +4,8 @@ const useStyles = makeStyles()((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
+    height: '20vh !important',
+    minHeight: '300px !important',
   },
   desktopOptions: {
     display: 'flex',

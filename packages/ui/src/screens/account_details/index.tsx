@@ -61,7 +61,7 @@ const AccountDetails = () => {
             ) : null}
             {!profileState.loading && !accountBalanceState.loading ? (
               <>
-                <Staking className={classes.staking} />
+                {/* <Staking className={classes.staking} /> */}
                 <Transactions className={classes.transactions} />
               </>
             ) : null}

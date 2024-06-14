@@ -113,6 +113,7 @@ const GridRow: FC<GridRowProps> = ({
       : '0%';
   const votingPower = numeral(item.votingPower).format('0,0');
 
+  //TODO item.votingPower
   let formatItem: ReactNode | null = null;
   switch (column) {
     case 'idx':

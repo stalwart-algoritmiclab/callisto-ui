@@ -1,7 +1,3 @@
-import Big from 'big.js';
-import { useRouter } from 'next/router';
-import * as R from 'ramda';
-import { useCallback, useEffect, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import { useDesmosProfile } from '@/hooks/use_desmos_profile';
 import type {
@@ -20,8 +16,18 @@ import {
   useRewards,
   useUnbondingBalance,
 } from '@/screens/account_details/utils';
+import { useRatesAll } from '@/utils';
 import { formatToken } from '@/utils/format_token';
 import { getDenom } from '@/utils/get_denom';
+import { Rate } from '@/utils/market_cap/useRatesAll';
+
+import Big from 'big.js';
+
+import { useRouter } from 'next/router';
+
+import * as R from 'ramda';
+
+import { useCallback, useEffect, useState } from 'react';
 
 const { extra, primaryTokenUnit, tokenUnits } = chainConfig();
 
@@ -156,7 +162,15 @@ const formatBalance = (data: Data): BalanceType => {
 // ============================
 // Format other tokens
 // ============================
-const formatOtherTokens = (data: Data) => {
+type FormatTokens = (
+  data: Data,
+  rate?: any
+) => {
+  data: OtherTokenType[];
+  count: number;
+};
+
+const formatOtherTokens: FormatTokens = (data, rate) => {
   // Loop through balance and delegation to figure out what the other tokens are
   const otherTokenUnits = new Set<string>();
   const otherTokens: OtherTokenType[] = [];
@@ -188,15 +202,15 @@ const formatOtherTokens = (data: Data) => {
 
   otherTokenUnits.forEach((x: string) => {
     const availableRawAmount = getDenom(available, x);
-    const availableAmount = formatToken(availableRawAmount.amount, x);
+    const availableAmount = formatToken(availableRawAmount.amount, x, rate[x]?.decimals || 0);
     const rewardsRawAmount = rewards.reduce((a, b) => {
       const coins = R.pathOr<NonNullable<(typeof b)['coins']>>([], ['coins'], b);
       const denom = getDenom(coins, x);
       return Big(a).plus(denom.amount).toPrecision();
     }, '0');
-    const rewardAmount = formatToken(rewardsRawAmount, x);
+    const rewardAmount = formatToken(rewardsRawAmount, x, rate[x]?.decimals || 0);
     const commissionRawAmount = getDenom(commission, x);
-    const commissionAmount = formatToken(commissionRawAmount.amount, x);
+    const commissionAmount = formatToken(commissionRawAmount.amount, x, rate[x]?.decimals || 0);
 
     otherTokens.push({
       denom: tokenUnits?.[x]?.display ?? x,
@@ -215,7 +229,7 @@ const formatOtherTokens = (data: Data) => {
 // ==========================
 // Format Balance Data
 // ==========================
-const formatAllBalance = (data: Data) => {
+const formatAllBalance = (data: Data, rate?: any) => {
   const stateChange: Partial<AccountBalanceState> = {
     loading: false,
   };
@@ -224,7 +238,7 @@ const formatAllBalance = (data: Data) => {
 
   stateChange.balance = formatBalance(data);
 
-  stateChange.otherTokens = formatOtherTokens(data);
+  stateChange.otherTokens = formatOtherTokens(data, rate);
 
   return stateChange;
 };
@@ -260,7 +274,11 @@ export const useAccountProfileDetails = () => {
 export const useAccountBalance = () => {
   const router = useRouter();
   const [state, setState] = useState<AccountBalanceState>(balanceInitialState);
-
+  const ratesAll = useRatesAll();
+  const ratesMap = ratesAll.reduce((acc, rate) => {
+    acc[rate.denom] = rate;
+    return acc;
+  }, {});
   const handleSetState = useCallback(
     (stateChange: (prevState: AccountBalanceState) => AccountBalanceState) => {
       setState((prevState) => {
@@ -294,7 +312,7 @@ export const useAccountBalance = () => {
     formattedRawData.unbondingBalance = R.pathOr({ coins: [] }, ['unbondingBalance'], unbonding);
     formattedRawData.delegationRewards = R.pathOr([], ['delegationRewards'], rewards);
 
-    const formatAccountBalance = formatAllBalance(formattedRawData);
+    const formatAccountBalance = formatAllBalance(formattedRawData, ratesMap);
 
     if (Object.keys(formatAccountBalance).length > 0) {
       handleSetState((prevState) => ({

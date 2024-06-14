@@ -4,13 +4,13 @@ import { useMemo } from 'react';
 
 import { useClient } from '../useTsClient';
 
-type Rate = {
+export type Rate = {
   creator: string;
   decimals: number;
   denom: string;
   rate: number;
 };
-type Rates = () => Rate[];
+export type Rates = () => Rate[];
 
 export default function useStwartchainRates() {
   const client = useClient();
