@@ -142,7 +142,8 @@ const GridRow: FC<GridRowProps> = ({
               : item.votingPowerPercent
           }
           content={votingPower}
-          topVotingPower={item.topVotingPower ?? false}
+          // topVotingPower={item.topVotingPower ?? false}
+          topVotingPower={false}
         />
       );
       break;

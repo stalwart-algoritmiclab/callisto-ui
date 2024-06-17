@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRecoilValue } from 'recoil';
 import BigDipperLogoRed from 'shared-utils/assets/big-dipper-red.svg';
 import BigDipperLogoWhite from 'shared-utils/assets/big-dipper-white.svg';
+import StalwartLogo from 'shared-utils/assets/stwart-logo.svg';
 
 const Navbar = (props: NavbarProps) => {
   const { classes, cx } = useStyles();
@@ -17,12 +18,16 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <div className={classes.root}>
-      <Link shallow href={HOME} className={classes.a}>
+      {/* <Link shallow href={HOME} className={classes.a}>
         {theme === 'light' ? (
           <BigDipperLogoRed className={classes.logo} />
         ) : (
           <BigDipperLogoWhite className={classes.logo} />
         )}
+      </Link> */}
+
+      <Link shallow href={HOME} className={classes.a}>
+        <StalwartLogo className={classes.logo} role="button" aria-label="toggle menu" />
       </Link>
       <div className={classes.actions}>
         {/* =================================== */}
