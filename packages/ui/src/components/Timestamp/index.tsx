@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import dayjs from '@/utils/dayjs';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';

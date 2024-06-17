@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import AppTrans from '@/components/AppTrans';
 import i18n from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';

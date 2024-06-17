@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import { FC, ReactNode, useMemo } from 'react';
 import Box from '@/components/box';
 import LoadAndExist from '@/components/load_and_exist';

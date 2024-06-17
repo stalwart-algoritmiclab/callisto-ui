@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import chainConfig from '@/chainConfig';
 import Box from '@/components/box';
 import CustomToolTip, { type CustomToolTipData } from '@/components/custom_tool_tip';

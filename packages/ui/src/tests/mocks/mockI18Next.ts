@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 /* eslint-disable no-nested-ternary, react/no-array-index-key */
 import { jest } from '@jest/globals';
 import type { Trans as TransType } from 'next-i18next';

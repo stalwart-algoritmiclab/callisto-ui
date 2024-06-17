@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import Mobile from '@/components/nav/components/mobile';
 import { mockChainId, mockQuery } from '@/hooks/useBigDipperNetworks/mocks';
 import { mockClient } from '@/tests/mocks/mockApollo';

@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import { ComponentProps, FC } from 'react';
 import Pagination from '@/components/pagination';
 import useStyles from '@/screens/proposal_details/components/deposits/components/paginate/styles';

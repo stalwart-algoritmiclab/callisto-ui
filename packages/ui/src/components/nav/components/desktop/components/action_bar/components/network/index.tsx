@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import ChainIcon from '@/components/ChainIcon';
 import useStyles from '@/components/nav/components/desktop/components/action_bar/components/network/styles';
 import useBigDipperNetworks from '@/hooks/useBigDipperNetworks';

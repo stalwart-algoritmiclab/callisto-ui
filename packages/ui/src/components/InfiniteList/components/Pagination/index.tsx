@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import PaginationActions from '@/components/InfiniteList/components/PaginationActions';
 import useStyles from '@/components/InfiniteList/styles';
 import { PaginationProps, UNKNOWN_ITEM_COUNT } from '@/components/InfiniteList/types';

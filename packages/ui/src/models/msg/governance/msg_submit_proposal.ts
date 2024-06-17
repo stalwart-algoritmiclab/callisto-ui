@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import * as R from 'ramda';
 import MsgCommunityPoolSpendProposal from '@/models/msg/governance/msg_community_pool_spend_proposal';
 import MsgParameterChangeProposal from '@/models/msg/governance/msg_parameter_change_proposal';

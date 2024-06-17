@@ -1,3 +1,8 @@
+<!--
+  - SPDX-License-Identifier: BUSL-1.1
+  - Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+  - Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+  -->
 <svg width="24" height="24" viewBox="0 0 24 24" fill="#999" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2340_23078)">
 <path d="M14.1384 16.8874L17.193 13.8329L14.1384 10.7783" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

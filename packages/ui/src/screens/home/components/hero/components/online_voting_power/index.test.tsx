@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import { OnlineVotingPowerDocument } from '@/graphql/types/general_types';
 import OnlineVotingPower from '@/screens/home/components/hero/components/online_voting_power';
 import { mockClient } from '@/tests/mocks/mockApollo';

@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import numeral from 'numeral';
 
 const SATOSHI_AMOUNT = Math.pow(10, Number(process.env.NEXT_PUBLIC_DECIMAL) ?? 0);

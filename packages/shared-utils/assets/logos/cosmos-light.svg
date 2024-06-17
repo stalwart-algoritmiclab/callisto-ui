@@ -1,3 +1,8 @@
+<!--
+  - SPDX-License-Identifier: BUSL-1.1
+  - Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+  - Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+  -->
 <svg width="174" height="44" viewBox="0 0 174 44" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9534 1.5242L2.22088 11.7621V32.2379L19.9534 42.4758L37.6861 32.2379V11.7621L19.9534 1.5242ZM39.0061 11L19.9534 0L0.900879 11V33L19.9534 44L39.0061 33V11Z" fill="#BA3FD9"/>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9458 14.11C18.584 14.11 17.4761 13.0014 17.4761 11.6385C17.4761 10.2757 18.584 9.16697 19.9458 9.16697C21.3077 9.16697 22.4156 10.2757 22.4156 11.6385C22.4156 13.0014 21.3077 14.11 19.9458 14.11ZM19.9458 10.5136C19.326 10.5136 18.8218 11.0183 18.8218 11.6385C18.8218 12.2587 19.326 12.7634 19.9458 12.7634C20.5657 12.7634 21.07 12.2587 21.07 11.6385C21.07 11.0183 20.5657 10.5136 19.9458 10.5136Z" fill="#BA3FD9"/>

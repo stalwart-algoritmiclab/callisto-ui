@@ -1,3 +1,8 @@
+<!--
+  - SPDX-License-Identifier: BUSL-1.1
+  - Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+  - Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+  -->
 <svg width="377" height="44" viewBox="0 0 377 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M65.7139 42.9806V1.021H81.5299L98.7185 31.7117L101.941 29.6137C100.031 26.6563 98.6787 23.999 97.8828 21.6412C97.0872 19.2434 96.6893 16.4461 96.6893 13.2493V1.021H107.611V42.9806H94.7198L74.4872 6.77548L71.2645 8.75356C74.8455 14.7079 76.6358 20.6822 76.6358 26.6764V42.9806H65.7139Z" fill="white"/>
 <path d="M116.188 42.9806V1.021H148.536V9.95256H127.229V17.3853H143.702V25.7172H127.229V34.0494H148.536V42.9806H116.188Z" fill="white"/>

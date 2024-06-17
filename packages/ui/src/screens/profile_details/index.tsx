@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import { NextSeo } from 'next-seo';
 import useAppTranslation from '@/hooks/useAppTranslation';
 import DesmosProfile from '@/components/desmos_profile';

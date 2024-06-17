@@ -1,3 +1,8 @@
+<!--
+  - SPDX-License-Identifier: BUSL-1.1
+  - Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+  - Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+  -->
 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="36" height="36" rx="4" fill="#B34ED3"/>
 <rect x="18" y="3" width="21.2132" height="21.2132" rx="4" transform="rotate(45 18 3)" fill="#F0E0F4"/>

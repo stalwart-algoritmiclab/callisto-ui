@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: BUSL-1.1
+ * Contributed by Algoritmic Lab Ltd. Copyright (C) 2024.
+ * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
+ */
+
 import AvatarName from '@/components/avatar_name';
 import Loading from '@/components/loading';
 import SingleBlockMobile from '@/components/single_block_mobile';
