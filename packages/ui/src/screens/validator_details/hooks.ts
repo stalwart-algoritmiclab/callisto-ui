@@ -203,14 +203,14 @@ function formatValidatorVotingPower(data: ValidatorVotingPowersQuery): Partial<V
   }
 
   const selfVotingPower =
-    (data.validator[0]?.validatorVotingPowers?.[0]?.votingPower ?? 0) /
+    (data.validator[0]?.validatorVotingPowers?.votingPower ?? 0) /
     10 ** (extra.votingPowerExponent ?? 0);
 
   const votingPower = {
     self: selfVotingPower,
     overall: formatToken(data?.stakingPool?.[0]?.bonded ?? 0, votingPowerTokenUnit),
-    height: data.validator[0]?.validatorVotingPowers?.[0]?.height ?? 0,
-    validatorStatus: data.validator[0]?.validatorStatuses[0]?.status,
+    height: data.validator[0]?.validatorVotingPowers?.height ?? 0,
+    validatorStatus: data.validator[0]?.validatorStatuses?.status,
   };
 
   stateChange.votingPower = votingPower;
@@ -237,16 +237,15 @@ function formatValidatorOverview(data: ValidatorInfoQuery): Partial<ValidatorOve
   };
 
   const slashingParams = SlashingParams.fromJson(data?.slashingParams?.[0]?.params ?? {});
-  const missedBlockCounter =
-    data.validator[0]?.validatorSigningInfos?.[0]?.missedBlocksCounter ?? 0;
+  const missedBlockCounter = data.validatorSigningInfos?.[0]?.missedBlocksCounter ?? 0;
   const { signedBlockWindow } = slashingParams;
   const condition = getValidatorCondition(signedBlockWindow, missedBlockCounter);
 
   const status: StatusType = {
     status: data.validator[0]?.validatorStatuses?.status ?? 3,
     jailed: data.validator[0]?.validatorStatuses?.jailed ?? false,
-    tombstoned: data.validator[0]?.validatorSigningInfos?.[0]?.tombstoned ?? false,
-    commission: data.validator[0]?.validatorCommissions?.[0]?.commission ?? 0,
+    tombstoned: data.validatorSigningInfos?.[0]?.tombstoned ?? false,
+    commission: data.validatorCommissions?.[0]?.commission ?? 0,
     condition,
     missedBlockCounter,
     signedBlockWindow,

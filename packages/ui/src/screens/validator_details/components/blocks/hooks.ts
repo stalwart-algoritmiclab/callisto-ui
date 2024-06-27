@@ -4,20 +4,23 @@
  * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
  */
 
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 import {
   LastHundredBlocksSubscription,
   useLastHundredBlocksSubscription,
 } from '@/graphql/types/general_types';
 
-const formatLastHundredBlocks = (data: LastHundredBlocksSubscription) =>
-  data.block.map((x) => ({
+import { useRouter } from 'next/router';
+
+import { useState } from 'react';
+
+const formatLastHundredBlocks = (data: LastHundredBlocksSubscription) => {
+  return data.block.map((x) => ({
     height: x.height,
     txs: x.transactions.length,
     proposer: x.validator?.validatorInfo?.operatorAddress ?? '',
     signed: x.precommits.length === 1,
   }));
+};
 
 type BlocksState = {
   height: number;

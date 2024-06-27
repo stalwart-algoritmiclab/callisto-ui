@@ -30,6 +30,7 @@ const { extra, votingPowerTokenUnit } = chainConfig();
 // ==========================
 const formatValidators = (data: ValidatorsQuery): Partial<ValidatorsState> => {
   const slashingParams = SlashingParams.fromJson(data?.slashingParams?.[0]?.params ?? {});
+
   const votingPowerOverall =
     numeral(
       formatToken(data?.stakingPool?.[0]?.bondedTokens ?? 0, votingPowerTokenUnit).value
@@ -53,7 +54,7 @@ const formatValidators = (data: ValidatorsQuery): Partial<ValidatorsState> => {
         validator: x.validatorInfo?.operatorAddress ?? '',
         votingPower: votingPower ?? 0,
         votingPowerPercent: votingPowerPercent ?? 0,
-        commission: (data?.validatorCommissions?.[0]?.commission ?? 0) * 100,
+        commission: (data?.validatorCommission?.[0]?.commission ?? 0) * 100,
         condition,
         status: x?.validatorStatus?.status ?? 0,
         jailed: x?.validatorStatus?.jailed ?? false,

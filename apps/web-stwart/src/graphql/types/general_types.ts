@@ -14180,8 +14180,8 @@ export type ValidatorSigningInfosQueryHookResult = ReturnType<typeof useValidato
 export type ValidatorSigningInfosLazyQueryHookResult = ReturnType<typeof useValidatorSigningInfosLazyQuery>;
 export type ValidatorSigningInfosQueryResult = Apollo.QueryResult<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>;
 export const ValidatorInfoDocument = gql`
-    query ValidatorInfo($address: String) {
-  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}}) {
+query ValidatorInfo($address: String) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}, validator_voting_powers: {voting_power: {}}}) {
     validatorInfo: validator_info {
       operatorAddress: operator_address
       selfDelegateAddress: self_delegate_address
@@ -14196,14 +14196,18 @@ export const ValidatorInfoDocument = gql`
       jailed
       height
     }
+     validatorVotingPowers: validator_voting_powers {
+      voting_power
+      height
+    }
   }
-   validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
-      missedBlocksCounter: missed_blocks_counter
-      tombstoned
-    }
-    validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
-      commission
-    }
+  validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
+    missedBlocksCounter: missed_blocks_counter
+    tombstoned
+  }
+  validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
+    commission
+  }
   slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
     params
   }

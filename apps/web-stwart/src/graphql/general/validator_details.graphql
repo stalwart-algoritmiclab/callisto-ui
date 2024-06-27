@@ -55,7 +55,7 @@ query ValidatorSigningInfos($address: String) {
 }
 
 query ValidatorInfo($address: String) {
-  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}}) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}, validator_voting_powers: {voting_power: {}}}) {
     validatorInfo: validator_info {
       operatorAddress: operator_address
       selfDelegateAddress: self_delegate_address
@@ -70,14 +70,18 @@ query ValidatorInfo($address: String) {
       jailed
       height
     }
+     validatorVotingPowers: validator_voting_powers {
+      voting_power
+      height
+    }
   }
-   validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
-      missedBlocksCounter: missed_blocks_counter
-      tombstoned
-    }
-    validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
-      commission
-    }
+  validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
+    missedBlocksCounter: missed_blocks_counter
+    tombstoned
+  }
+  validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
+    commission
+  }
   slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
     params
   }

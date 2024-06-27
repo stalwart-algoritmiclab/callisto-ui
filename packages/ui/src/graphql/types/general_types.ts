@@ -12364,7 +12364,49 @@ export type ValidatorInfoQueryVariables = Exact<{
 }>;
 
 
-export type ValidatorInfoQuery = { validator: Array<{ __typename?: 'validator', validatorInfo?: { __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, maxRate: string } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', details?: string | null, website?: string | null }>, validatorStatuses: { __typename?: 'validator_status', status: number, jailed: boolean, height: any }, validatorSigningInfos: Array<{ __typename?: 'validator_signing_info', tombstoned: boolean, missedBlocksCounter: any }>, validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }> }>, slashingParams: Array<{ __typename?: 'slashing_params', params: any }> };
+export type ValidatorInfoQuery = {
+  validator: Array<{
+    __typename?: 'validator',
+    validatorInfo?: {
+      __typename?: 'validator_info',
+      operatorAddress: string,
+      selfDelegateAddress?: string | null,
+      maxRate: string
+    } | null,
+    validatorDescriptions: Array<{
+      __typename?: 'validator_description',
+      details?: string | null,
+      website?: string | null
+    }>,
+    validatorStatuses: {
+      __typename?: 'validator_status',
+      status: number,
+      jailed: boolean,
+      height: any
+    },
+      validatorVotingPowers: {
+      __typename?: 'validator_voting_powers',
+      voting_power: number,
+      height: number
+    },
+   
+   
+  }>,
+   validatorSigningInfos: Array<{
+      __typename?: 'validator_signing_info',
+      tombstoned: boolean,
+      missedBlocksCounter: any
+    }>,
+    validatorCommissions: Array<{
+      __typename?: 'validator_commission',
+      commission: any
+    }>
+  slashingParams: Array<{
+    __typename?: 'slashing_params',
+    params: any
+  }>
+
+};
 
 export type ValidatorCommissionQueryVariables = Exact<{
   address?: InputMaybe<Scalars['String']>;
@@ -12378,7 +12420,7 @@ export type ValidatorVotingPowersQueryVariables = Exact<{
 }>;
 
 
-export type ValidatorVotingPowersQuery = { validator: Array<{ __typename?: 'validator', validatorVotingPowers: Array<{ __typename?: 'validator_voting_power', height: any, votingPower: any }>, validatorStatuses: Array<{ __typename?: 'validator_status', status: number }> }>, stakingPool: Array<{ __typename?: 'staking_pool', height: any, bonded: string }> };
+export type ValidatorVotingPowersQuery = { validator: Array<{ __typename?: 'validator', validatorVotingPowers: { __typename?: 'validator_voting_powers', height: number, votingPower: number }, validatorStatuses: { __typename?: 'validator_status', status: number } }>, stakingPool: Array<{ __typename?: 'staking_pool', height: any, bonded: string }> };
 
 export type ValidatorAddressQueryVariables = Exact<{
   address?: InputMaybe<Scalars['String']>;
@@ -12444,7 +12486,7 @@ export type ValidatorsQuery = {
       tombstoned: boolean,
       missedBlocksCounter: any
     }>,
-  validatorCommissions: Array<{ __typename?: 'validator_commission', commission: any }>
+  validatorCommission: Array<{ __typename?: 'validator_commission', commission: any }>
 };
 
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
@@ -14209,7 +14251,7 @@ export type ValidatorSigningInfosLazyQueryHookResult = ReturnType<typeof useVali
 export type ValidatorSigningInfosQueryResult = Apollo.QueryResult<ValidatorSigningInfosQuery, ValidatorSigningInfosQueryVariables>;
 export const ValidatorInfoDocument = gql`
 query ValidatorInfo($address: String) {
-  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}}) {
+  validator(where: {validator_info: {operator_address: {_eq: $address}}, validator_description: {}, validator_status: {}, validator_voting_powers: {voting_power: {}}}) {
     validatorInfo: validator_info {
       operatorAddress: operator_address
       selfDelegateAddress: self_delegate_address
@@ -14224,18 +14266,23 @@ query ValidatorInfo($address: String) {
       jailed
       height
     }
+     validatorVotingPowers: validator_voting_powers {
+      voting_power
+      height
+    }
   }
-   validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
-      missedBlocksCounter: missed_blocks_counter
-      tombstoned
-    }
-    validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
-      commission
-    }
+  validatorSigningInfos: validator_signing_info(order_by: {height: desc}, limit: 1) {
+    missedBlocksCounter: missed_blocks_counter
+    tombstoned
+  }
+  validatorCommissions: validator_commission(order_by: {height: desc}, limit: 1) {
+    commission
+  }
   slashingParams: slashing_params(order_by: {height: desc}, limit: 1) {
     params
   }
 }
+
     `;
 
 /**
