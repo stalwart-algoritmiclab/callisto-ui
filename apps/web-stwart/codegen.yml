@@ -3,7 +3,7 @@ generates:
   ./src/graphql/types/general_types.ts:
     documents:
       - 'src/graphql/general/*'
-    schema: https://hasura-testnet.stalwart.dev/v1/graphql
+    schema: https://hasura.stalwart.dev/v1/graphql
     config:
       # omitOperationSuffix: true
       skipTypeNameForRoot: true
