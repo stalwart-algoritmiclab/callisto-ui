@@ -17,6 +17,12 @@ export type BaseCategories =
   | 'authz'
   | 'feegrant'
   | 'vesting'
+  | 'exchange'
+  | 'faucet'
+  | 'create_tariffs'
+  | 'update_tariffs'
+  | 'delete_tariffs'
+  | 'withdraw'
   | 'others';
 export type CustomCategories = ''; // custom modules
 export type Categories = BaseCategories | CustomCategories;

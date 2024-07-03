@@ -10,8 +10,8 @@ const useStyles = makeStyles()((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    height: '20vh !important',
-    minHeight: '300px !important',
+    // height: '20vh !important',
+    minHeight: '320px !important',
   },
   desktopOptions: {
     display: 'flex',
@@ -73,7 +73,8 @@ const useStyles = makeStyles()((theme) => ({
   tags: {
     marginBottom: theme.spacing(2),
     [theme.breakpoints.up('lg')]: {
-      minWidth: '200px',
+      // minWidth: '200px',
+      marginRight: '20px',
       marginBottom: 0,
       paddingRight: theme.spacing(2),
       alignSelf: 'flex-start',
