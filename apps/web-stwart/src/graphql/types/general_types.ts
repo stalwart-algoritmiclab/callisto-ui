@@ -13496,7 +13496,7 @@ export type ParamsQueryHookResult = ReturnType<typeof useParamsQuery>;
 export type ParamsLazyQueryHookResult = ReturnType<typeof useParamsLazyQuery>;
 export type ParamsQueryResult = Apollo.QueryResult<ParamsQuery, ParamsQueryVariables>;
 export const ProposalDetailsDocument = gql`
-    query ProposalDetails($proposalId: Int) {
+   query ProposalDetails($proposalId: Int) {
   proposal(where: {id: {_eq: $proposalId}}) {
     proposer: proposer_address
     title
@@ -13505,10 +13505,11 @@ export const ProposalDetailsDocument = gql`
     content
     proposalId: id
     submitTime: submit_time
-    proposalType: proposal_type
+    metadata
     depositEndTime: deposit_end_time
     votingStartTime: voting_start_time
     votingEndTime: voting_end_time
+    __typename
   }
 }
     `;

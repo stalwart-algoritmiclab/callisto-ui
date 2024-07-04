@@ -4,11 +4,14 @@
  * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
  */
 
-import { useRouter } from 'next/router';
-import * as R from 'ramda';
-import { useCallback, useState } from 'react';
 import type { ProposalState } from '@/screens/proposal_details/types';
 import { ProposalDetailsQuery, useProposalDetailsQuery } from '@/graphql/types/general_types';
+
+import { useRouter } from 'next/router';
+
+import * as R from 'ramda';
+
+import { useCallback, useState } from 'react';
 
 // =========================
 // overview
