@@ -12,10 +12,12 @@ import { MsgUpdateTariffs } from '@/models';
 import { useProfileRecoil } from '@/recoil/profiles/hooks';
 import { formatToken, useRatesAll } from '@/utils';
 import { useStyles } from './styles';
+import useAppTranslation from '@/hooks/useAppTranslation';
 
 const UpdateTariffs: FC<{ message: MsgUpdateTariffs }> = (props: any) => {
   const { message } = props;
   const { classes } = useStyles();
+  const { t } = useAppTranslation('common');
 
   const minRefBalance = message.tariffs.minRefBalance;
   const denom = message.denom.toUpperCase();
@@ -43,11 +45,11 @@ const UpdateTariffs: FC<{ message: MsgUpdateTariffs }> = (props: any) => {
         <table className={classes.table}>
           <thead>
             <tr className={classes.tr}>
-              <th className={classes.th}>Amount from</th>
-              <th className={classes.th}>Fee</th>
-              <th className={classes.th}>Referral reward</th>
-              <th className={classes.th}>Stake reward</th>
-              <th className={classes.th}>No referral reward</th>
+              <th className={classes.th}>{t('Amount from')}</th>
+              <th className={classes.th}>{t('Fee')}</th>
+              <th className={classes.th}>{t('Referral reward')}</th>
+              <th className={classes.th}>{t('Stake reward')}</th>
+              <th className={classes.th}>{t('No referral reward')}</th>
             </tr>
           </thead>
           <tbody>
