@@ -92,6 +92,10 @@
   "walletTitle": "Connected wallets",
   "searchType": "Search type",
   "selectAll": "Select All",
-  "filter": "Filter",
+  "Amount from": "Amount from",
+  "Fee": "Fee",
+  "Referral reward": "Referral reward",
+  "Stake reward": "Stake reward",
+  "No referral reward": "No referral reward",
   "stalwart": "Stalwart"
 }

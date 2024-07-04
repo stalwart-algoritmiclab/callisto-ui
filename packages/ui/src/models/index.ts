@@ -75,3 +75,9 @@ export { default as MsgCreatePeriodicVestingAccount } from '@/models/msg/vesting
 export { default as MsgCreateVestingAccount } from '@/models/msg/vesting/msg_create_vesting_account';
 export { default as SlashingParams } from '@/models/slashing_params';
 export { default as StakingParams } from '@/models/staking_params';
+export { default as MsgExchange } from '@/models/msg/exchange/msg_exchange';
+export { default as MsgFaucet } from '@/models/msg/faucet/msg_faucet';
+export { default as MsgCreateTariffs } from '@/models/msg/tariffs/msg_create_tariffs';
+export { default as MsgUpdateTariffs } from '@/models/msg/tariffs/msg_update_tariffs';
+export { default as MsgDeleteTariffs } from '@/models/msg/tariffs/msg_delete_tariffs';
+export { default as MsgWithdraw } from '@/models/msg/withdraw/msg_withdraw';
