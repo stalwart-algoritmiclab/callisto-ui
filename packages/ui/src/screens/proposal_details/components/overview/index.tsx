@@ -37,7 +37,7 @@ const Overview: FC<OverviewProps> = ({ className, overview }) => {
   const { classes, cx } = useStyles();
   const { t } = useAppTranslation('proposals');
 
-  const type = getProposalType(R.pathOr('', ['@type'], overview.content));
+  const type = getProposalType(R.pathOr('', [0, '@type'], overview.content));
   const { address: proposerAddress, name: proposerName } = useProfileRecoil(overview.proposer);
   const { name: recipientName } = useProfileRecoil(overview?.content?.recipient);
   const proposerMoniker = proposerName || overview.proposer;

@@ -12264,7 +12264,7 @@ export type ProposalDetailsDepositsQueryVariables = Exact<{
 }>;
 
 
-export type ProposalDetailsDepositsQuery = { proposalDeposit: Array<{ __typename?: 'proposal_deposit', amount?: any | null, depositorAddress?: string | null, block?: { __typename?: 'block', timestamp: any } | null }> };
+export type ProposalDetailsDepositsQuery = { proposalDeposit: Array<{ __typename?: 'proposal_deposit', amount?: any | null, depositorAddress?: string | null, block?:  Array<{ __typename: 'block', timestamp: string }> | null }> };
 
 export type ProposalDetailsVotesQueryVariables = Exact<{
   proposalId?: InputMaybe<Scalars['Int']>;
