@@ -35,7 +35,6 @@ const FilterTxsByType: FC = () => {
     handleCancel,
     handleOpen,
   } = useTransactionTypeFilter();
-
   const open = useRecoilValue(readOpenDialog) ?? false;
   const selectedMsgTypes = useRecoilValue(readSelectedMsgTypes);
 
@@ -53,7 +52,7 @@ const FilterTxsByType: FC = () => {
       <Dialog maxWidth="md" onClose={handleCancel} open={open} className={classes.dialog}>
         <DialogTitle className={classes.header}>
           <div className={classes.title}>
-            <Typography variant="h2">{t('filter')}</Typography>
+            <Typography variant="h2">{t('Filter')}</Typography>
           </div>
           <div>
             <TxTypeSearch
@@ -148,7 +147,7 @@ const FilterTxsByType: FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleFilterTxs} color="primary">
-            {t('filter')}
+            {t('Filter')}
           </Button>
         </DialogActions>
       </Dialog>

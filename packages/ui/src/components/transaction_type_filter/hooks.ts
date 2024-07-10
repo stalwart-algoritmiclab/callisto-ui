@@ -25,7 +25,7 @@ export type MessageTypes = {
 
 export const useTransactionTypeFilter = () => {
   const router = useRouter();
-
+  console.log(router, 'router');
   // Fetch message types data based on address or all message types
   const {
     data: messageTypesData,
@@ -40,10 +40,13 @@ export const useTransactionTypeFilter = () => {
     refetch: msgTypesByAddressRefetch,
   } = useMsgTypesByAddressQuery({
     variables: {
-      addresses: `{${router.query.address}}` as string,
+      addresses: ['stwart1v2dudn7nwppclzruy73xpf6nzrzxu8pypl8uze'],
     },
+    // variables: {
+    //   addresses: `{${router.query.address}}` as string,
+    // },
   });
-
+  console.log(msgTypesByAddressData, 'msgTypesByAddressData');
   // Determine page context
   const isAccountsPage = useMemo(() => window.location.pathname.includes('/accounts'), []);
   const isValidatorDetailsPage = useMemo(
@@ -71,11 +74,11 @@ export const useTransactionTypeFilter = () => {
   const [, setFilter] = useRecoilState(writeFilter) as [string, SetterOrUpdater<string>];
   const [, setSelectedMsgs] = useRecoilState(writeSelectedMsgTypes) as [
     string[],
-    SetterOrUpdater<string[]>,
+    SetterOrUpdater<string[]>
   ];
   const [__, setOpenDialog] = useRecoilState(writeOpenDialog) as [
     boolean,
-    SetterOrUpdater<boolean>,
+    SetterOrUpdater<boolean>
   ];
 
   // Fetch data again if there's an error

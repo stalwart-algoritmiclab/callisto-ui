@@ -17,6 +17,10 @@ const useStyles = makeStyles()(() => ({
   root: {
     textAlign: 'right',
   },
+  time: {
+    textAlign: 'left',
+    minWidth: '67px',
+  },
 }));
 
 /* types */
@@ -55,7 +59,7 @@ const Timestamp: FC<TimestampProps> = ({ timestamp, isUnix }) => {
   );
   return (
     <Tooltip TransitionComponent={Zoom} title={label} placement="left" arrow>
-      <span>{output}</span>
+      <span className={classes.time}>{output}</span>
     </Tooltip>
   );
 };

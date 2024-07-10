@@ -101,6 +101,9 @@ const Tokenomics: FC<ComponentDefault> = ({ className }) => {
             // stroke={theme.palette.background.paper}
             // strokeWidth={3}
             isAnimationActive={false}
+            style={{
+              outline: 'none',
+            }}
           >
             {data.map((entry) => (
               <Cell key={entry.legendKey} fill={entry.fill} />
