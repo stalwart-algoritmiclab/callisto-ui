@@ -12389,8 +12389,8 @@ export type ValidatorInfoQuery = {
       voting_power: number,
       height: number
     },
-   
-   
+
+
   }>,
    validatorSigningInfos: Array<{
       __typename?: 'validator_signing_info',
@@ -12471,14 +12471,14 @@ export type ValidatorsQuery = {
       status: number,
       jailed: boolean,
       height: any
-    }, 
+    },
     validatorInfo?: {
       __typename?: 'validator_info',
       operatorAddress: string,
       selfDelegateAddress?: string | null
     } | null,
   validatorVotingPower: { __typename?: 'validator_voting_power', votingPower: any },
-   
+
   }>,
   slashingParams: Array<{ __typename?: 'slashing_params', params: any }>,
   validatorSigningInfos: Array<{
@@ -12497,7 +12497,7 @@ export type ValidatorAddressesQuery = {
     __typename?: 'validator', validatorInfo?: {
       __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, consensusAddress: string, validator: Array<{
         __typename?: 'validator',
-  
+
 }> } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', moniker?: string | null, avatarUrl?: string | null }> }> };
 
 

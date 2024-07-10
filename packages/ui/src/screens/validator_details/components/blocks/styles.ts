@@ -24,6 +24,7 @@ const useStyles = makeStyles()((theme) => ({
     borderRadius: '2px',
     background: theme.palette.custom.general.surfaceTwo,
     margin: theme.spacing(0.25),
+    cursor: 'pointer',
     '&:hover': {
       background: Color(theme.palette.custom.tags.zero).alpha(0.5).string(),
     },

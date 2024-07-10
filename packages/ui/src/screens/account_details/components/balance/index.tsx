@@ -88,6 +88,9 @@ const Balance: FC<BalanceProps> = (props) => {
                     paddingAngle={dataCount > 1 ? 5 : 0}
                     fill="#82ca9d"
                     stroke="none"
+                    style={{
+                      outline: 'none',
+                    }}
                   >
                     {dataMemo.map((entry) => (
                       <Cell key={entry.key} fill={entry.background} stroke={entry.background} />
@@ -127,8 +130,8 @@ const Balance: FC<BalanceProps> = (props) => {
               </div>
               <div className="total__secondary--container total__single--container">
                 <Typography variant="body1" className="label">
-                  ${numeral(market.price).format('0,0.[00]', Math.floor)} /{' '}
-                  {(tokenUnits?.[primaryTokenUnit]?.display ?? '').toUpperCase()}
+                  {/* ${numeral(market.price).format('0,0.[00]', Math.floor)} /{' '} */}
+                  $0.3 / {(tokenUnits?.[primaryTokenUnit]?.display ?? '').toUpperCase()}
                 </Typography>
                 <Typography variant="body1">{totalAmount}</Typography>
               </div>

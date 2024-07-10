@@ -122,7 +122,7 @@ const Overview: FC<OverviewProps> = ({ className }) => {
           </div>
         </div>
 
-        <div className={cx(classes.copyText, classes.item)}>
+        {/* <div className={cx(classes.copyText, classes.item)}>
           <Typography variant="body1" className="label">
             {t('rewardAddress')}
           </Typography>
@@ -141,7 +141,7 @@ const Overview: FC<OverviewProps> = ({ className }) => {
               </span>
             </Typography>
           </div>
-        </div>
+        </div> */}
       </Box>
     </>
   );
