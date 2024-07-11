@@ -13615,19 +13615,24 @@ export type ProposalDetailsQueryHookResult = ReturnType<typeof useProposalDetail
 export type ProposalDetailsLazyQueryHookResult = ReturnType<typeof useProposalDetailsLazyQuery>;
 export type ProposalDetailsQueryResult = Apollo.QueryResult<ProposalDetailsQuery, ProposalDetailsQueryVariables>;
 export const ProposalDetailsTallyDocument = gql`
-    query ProposalDetails($proposalId: Int) {
-  proposal(where: {id: {_eq: $proposalId}}) {
-    proposer: proposer_address
-    title
-    description
-    status
-    content
-    proposalId: id
-    submitTime: submit_time
-    metadata
-    depositEndTime: deposit_end_time
-    votingStartTime: voting_start_time
-    votingEndTime: voting_end_time
+    query ProposalDetailsTally($proposalId: Int) {
+  proposalTallyResult: proposal_tally_result(
+    where: {proposal_id: {_eq: $proposalId}}
+  ) {
+    yes
+    no
+    noWithVeto: no_with_veto
+    abstain
+    __typename
+  }
+  stakingPool: proposal_staking_pool_snapshot(
+    where: {proposal_id: {_eq: $proposalId}}
+  ) {
+    bondedTokens: bonded_tokens
+    __typename
+  }
+  quorum: gov_params(limit: 1, order_by: {height: desc}) {
+    tallyParams: params
     __typename
   }
 }
