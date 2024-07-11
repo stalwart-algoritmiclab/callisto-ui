@@ -7,8 +7,13 @@
 // useTransactionTypeFilter hook
 import { useEffect, useMemo, useState, ChangeEvent, useCallback } from 'react';
 import { useMessageTypesQuery, useMsgTypesByAddressQuery } from '@/graphql/types/general_types';
-import { SetterOrUpdater, useRecoilState } from 'recoil';
-import { writeFilter, writeOpenDialog, writeSelectedMsgTypes } from '@/recoil/transactions_filter';
+import { SetterOrUpdater, useRecoilState, useRecoilValue } from 'recoil';
+import {
+  writeFilter,
+  writeOpenDialog,
+  writeSelectedMsgTypes,
+  readSelectedMsgTypes,
+} from '@/recoil/transactions_filter';
 import { useRouter } from 'next/router';
 
 // Define types for message type and message types
@@ -25,7 +30,6 @@ export type MessageTypes = {
 
 export const useTransactionTypeFilter = () => {
   const router = useRouter();
-  console.log(router, 'router');
   // Fetch message types data based on address or all message types
   const {
     data: messageTypesData,
@@ -40,14 +44,10 @@ export const useTransactionTypeFilter = () => {
     refetch: msgTypesByAddressRefetch,
   } = useMsgTypesByAddressQuery({
     variables: {
-      addresses: ['stwart1v2dudn7nwppclzruy73xpf6nzrzxu8pypl8uze'],
+      addresses: `{${router.query.address}}` as string,
     },
-    // variables: {
-    //   addresses: `{${router.query.address}}` as string,
-    // },
   });
-  console.log(msgTypesByAddressData, 'msgTypesByAddressData');
-  // Determine page context
+
   const isAccountsPage = useMemo(() => window.location.pathname.includes('/accounts'), []);
   const isValidatorDetailsPage = useMemo(
     () => window.location.pathname.includes('/validators/'),
@@ -67,10 +67,11 @@ export const useTransactionTypeFilter = () => {
   const [filteredTypes, setFilteredTypes] = useState<{ module: string; msgTypes: MessageType[] }[]>(
     []
   );
+
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const selectedMsgTypes = useRecoilValue(readSelectedMsgTypes);
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false);
 
-  // Recoil state for managing filters and dialog state
   const [, setFilter] = useRecoilState(writeFilter) as [string, SetterOrUpdater<string>];
   const [, setSelectedMsgs] = useRecoilState(writeSelectedMsgTypes) as [
     string[],
@@ -81,13 +82,12 @@ export const useTransactionTypeFilter = () => {
     SetterOrUpdater<boolean>
   ];
 
-  // Fetch data again if there's an error
   useEffect(() => {
     if (error) refetch();
   }, [error, refetch]);
 
-  // Open and cancel dialog functions
   const handleOpen = () => {
+    setSelectedFilters(selectedMsgTypes);
     setOpenDialog(true);
   };
 
@@ -198,20 +198,23 @@ export const useTransactionTypeFilter = () => {
     const str = selectedFilters.join(',');
     const query = `{${str}}`;
     setFilter(query);
-    setSelectedFilters(selectedFilters);
-    setSelectAllChecked(false);
     handleCancel();
   };
 
   // Handle selection of transaction types
   const handleTxTypeSelection = (event: ChangeEvent<HTMLInputElement>) => {
     const { checked, value } = event.target;
+
     if (checked) {
-      setSelectedFilters((prevFilters) => [...prevFilters, value]);
-      setSelectedMsgs((prevFilters) => [...prevFilters, value]);
+      const updatedFilters = [...selectedFilters, value];
+      setSelectedFilters(updatedFilters);
+      setSelectedMsgs(updatedFilters);
     } else {
-      setSelectedFilters((prevFilters) => prevFilters.filter((item) => item !== value));
-      setSelectedMsgs((prevFilters) => prevFilters.filter((item) => item !== value));
+      const updatedFilters = selectedFilters.filter((item) => {
+        return item !== value;
+      });
+      setSelectedFilters(updatedFilters);
+      setSelectedMsgs(updatedFilters);
       setSelectAllChecked(false);
     }
   };
