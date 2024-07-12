@@ -1,0 +1,16 @@
+query TopAccounts($limit: Int = 100, $offset: Int = 0) {
+  top_accounts(limit: $limit, offset: $offset, order_by: {sum: desc}) {
+    address
+    available
+    delegation
+    unbonding
+    reward
+    sum
+    type
+    __typename
+  }
+}
+{
+  "limit": 100,
+  "offset": 0
+}
