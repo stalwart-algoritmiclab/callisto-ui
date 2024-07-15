@@ -4,6 +4,7 @@
  * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
  */
 
+import { useRouter } from 'next/router';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import useAppTranslation from '@/hooks/useAppTranslation';
@@ -27,6 +28,12 @@ const BlockBox: FC<BlockBoxProps> = ({ i, item, state }) => {
   const { address, imageUrl, name } = useProfileRecoil(item.proposer);
   const { t } = useAppTranslation('validators');
   const { classes, cx } = useStyles();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/blocks/${item.height}`);
+  };
+
   return (
     <Tooltip
       key={item.height}
@@ -70,6 +77,7 @@ const BlockBox: FC<BlockBoxProps> = ({ i, item, state }) => {
         className={cx(classes.singleBlock, {
           signed: state[i].signed,
         })}
+        onClick={handleClick} 
       />
     </Tooltip>
   );

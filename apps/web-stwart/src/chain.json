@@ -228,9 +228,9 @@
         }
       },
       "endpoints": {
-        "graphql": "https://hasura-testnet.stalwart.dev/v1/graphql",
-        "graphqlWebsocket": "wss://hasura-testnet.stalwart.dev/v1/graphql",
-        "publicRpcWebsocket": "wss://rpc.testnet.stalwart.dev/websocket"
+        "graphql": "https://hasura.stalwart.dev/v1/graphql",
+        "graphqlWebsocket": "wss://hasura.stalwart.dev/v1/graphql",
+        "publicRpcWebsocket": "wss://rpc.dev.stalwart.dev/websocket"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",

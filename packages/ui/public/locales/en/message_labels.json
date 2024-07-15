@@ -57,5 +57,9 @@
   "MsgCreateVestingAccount": "Create Vesting Account",
   "MsgCreatePeriodicVestingAccount": "Create Periodic Vesting Account",
   "txFaucetLabel": "Faucet",
+  "txCreateTariffsLabel": "Create tariffs",
+  "txUpdateTariffsLabel": "Update tariffs",
+  "txDeleteTariffsLabel": "Delete tariffs",
+  "txWithdrawLabel": "Withdraw",
   "txExchangeLabel": "Exchange"
 }

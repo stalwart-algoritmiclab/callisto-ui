@@ -20,6 +20,7 @@
   "company": "Company",
   "community": "Community",
   "overview": "Overview",
+  "top_accounts": "Top Accounts",
   "blocks": "Blocks",
   "validators": "Validators",
   "transactions": "Transactions",
@@ -92,6 +93,10 @@
   "walletTitle": "Connected wallets",
   "searchType": "Search type",
   "selectAll": "Select All",
-  "filter": "Filter",
+  "Amount from": "Amount from",
+  "Fee": "Fee",
+  "Referral reward": "Referral reward",
+  "Stake reward": "Stake reward",
+  "No referral reward": "No referral reward",
   "stalwart": "Stalwart"
 }

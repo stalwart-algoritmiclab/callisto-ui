@@ -4,9 +4,6 @@
  * Full license is available at https://github.com/stalwart-algoritmiclab/callisto-ui/tree/dev/LICENSES
  */
 
-import { useRouter } from 'next/router';
-import * as R from 'ramda';
-import { useCallback, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import {
   ProposalDetailsDepositsQuery,
@@ -14,6 +11,12 @@ import {
 } from '@/graphql/types/general_types';
 import type { DepositState } from '@/screens/proposal_details/components/deposits/types';
 import { formatToken } from '@/utils/format_token';
+
+import { useRouter } from 'next/router';
+
+import * as R from 'ramda';
+
+import { useCallback, useState } from 'react';
 
 const { primaryTokenUnit } = chainConfig();
 
@@ -43,7 +46,7 @@ export const useDeposits = () => {
     const format = data.proposalDeposit.map((x) => ({
       amount: formatToken(x?.amount?.[0]?.amount ?? '0', x?.amount?.[0]?.denom ?? primaryTokenUnit),
       user: x?.depositorAddress ?? '',
-      timestamp: x?.block?.timestamp ?? '',
+      timestamp: x?.block?.[0]?.timestamp ?? '',
     }));
 
     return {

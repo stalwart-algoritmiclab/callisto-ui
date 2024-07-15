@@ -15,7 +15,6 @@ type NavProps = {
 
 const Nav: FC<NavProps> = ({ title }) => {
   const display = useDisplayStyles().classes;
-
   return (
     <>
       <Desktop className={display.hiddenUntilLg} title={title ?? ''} />

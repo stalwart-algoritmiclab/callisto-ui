@@ -12264,7 +12264,7 @@ export type ProposalDetailsDepositsQueryVariables = Exact<{
 }>;
 
 
-export type ProposalDetailsDepositsQuery = { proposalDeposit: Array<{ __typename?: 'proposal_deposit', amount?: any | null, depositorAddress?: string | null, block?: { __typename?: 'block', timestamp: any } | null }> };
+export type ProposalDetailsDepositsQuery = { proposalDeposit: Array<{ __typename?: 'proposal_deposit', amount?: any | null, depositorAddress?: string | null, block?:  Array<{ __typename: 'block', timestamp: string }> | null }> };
 
 export type ProposalDetailsVotesQueryVariables = Exact<{
   proposalId?: InputMaybe<Scalars['Int']>;
@@ -12389,8 +12389,8 @@ export type ValidatorInfoQuery = {
       voting_power: number,
       height: number
     },
-   
-   
+
+
   }>,
    validatorSigningInfos: Array<{
       __typename?: 'validator_signing_info',
@@ -12471,14 +12471,14 @@ export type ValidatorsQuery = {
       status: number,
       jailed: boolean,
       height: any
-    }, 
+    },
     validatorInfo?: {
       __typename?: 'validator_info',
       operatorAddress: string,
       selfDelegateAddress?: string | null
     } | null,
   validatorVotingPower: { __typename?: 'validator_voting_power', votingPower: any },
-   
+
   }>,
   slashingParams: Array<{ __typename?: 'slashing_params', params: any }>,
   validatorSigningInfos: Array<{
@@ -12497,7 +12497,7 @@ export type ValidatorAddressesQuery = {
     __typename?: 'validator', validatorInfo?: {
       __typename?: 'validator_info', operatorAddress: string, selfDelegateAddress?: string | null, consensusAddress: string, validator: Array<{
         __typename?: 'validator',
-  
+
 }> } | null, validatorDescriptions: Array<{ __typename?: 'validator_description', moniker?: string | null, avatarUrl?: string | null }> }> };
 
 
@@ -13569,7 +13569,7 @@ export type ParamsQueryHookResult = ReturnType<typeof useParamsQuery>;
 export type ParamsLazyQueryHookResult = ReturnType<typeof useParamsLazyQuery>;
 export type ParamsQueryResult = Apollo.QueryResult<ParamsQuery, ParamsQueryVariables>;
 export const ProposalDetailsDocument = gql`
-    query ProposalDetails($proposalId: Int) {
+query ProposalDetails($proposalId: Int) {
   proposal(where: {id: {_eq: $proposalId}}) {
     proposer: proposer_address
     title
@@ -13578,10 +13578,11 @@ export const ProposalDetailsDocument = gql`
     content
     proposalId: id
     submitTime: submit_time
-    proposalType: proposal_type
+    metadata
     depositEndTime: deposit_end_time
     votingStartTime: voting_start_time
     votingEndTime: voting_end_time
+    __typename
   }
 }
     `;
@@ -13622,14 +13623,17 @@ export const ProposalDetailsTallyDocument = gql`
     no
     noWithVeto: no_with_veto
     abstain
+    __typename
   }
   stakingPool: proposal_staking_pool_snapshot(
     where: {proposal_id: {_eq: $proposalId}}
   ) {
     bondedTokens: bonded_tokens
+    __typename
   }
   quorum: gov_params(limit: 1, order_by: {height: desc}) {
-    tallyParams: tally_params
+    tallyParams: params
+    __typename
   }
 }
     `;

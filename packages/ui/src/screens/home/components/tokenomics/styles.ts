@@ -67,6 +67,7 @@ const useStyles = makeStyles()((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-around',
     flexDirection: 'column',
+    
   },
 }));
 

@@ -416,18 +416,42 @@ const customTypeToModel = {
     tagTheme: 'four',
     tagDisplay: 'txUnblockUserLabel',
   },
-  // '/stwartchain.exchanger.MsgExchange': {
-  //   model: MODELS.MsgUnblockUser,
-  //   content: COMPONENTS.UnBlockUser,
-  //   tagTheme: 'four',
-  //   tagDisplay: 'txUnblockUserLabel',
-  // },
-  // '/stwartchain.faucet.MsgIssue': {
-  // model: MODELS.MsgUnblockUser,
-  // content: COMPONENTS.UnBlockUser,
-  // tagTheme: 'four',
-  // tagDisplay: 'txFaucetLabel',
-  // },
+  '/stwartchain.exchanger.MsgExchange': {
+    model: MODELS.MsgExchange,
+    content: COMPONENTS.Exchange,
+    tagTheme: 'four',
+    tagDisplay: 'txExchangeLabel',
+  },
+  '/stwartchain.faucet.MsgIssue': {
+    model: MODELS.MsgFaucet,
+    content: COMPONENTS.Faucet,
+    tagTheme: 'four',
+    tagDisplay: 'txFaucetLabel',
+  },
+  '/stwartchain.feepolicy.MsgCreateTariffs': {
+    model: MODELS.MsgCreateTariffs,
+    content: COMPONENTS.CreateTariffs,
+    tagTheme: 'four',
+    tagDisplay: 'txCreateTariffsLabel',
+  },
+  '/stwartchain.feepolicy.MsgUpdateTariffs': {
+    model: MODELS.MsgUpdateTariffs,
+    content: COMPONENTS.UpdateTariffs,
+    tagTheme: 'four',
+    tagDisplay: 'txUpdateTariffsLabel',
+  },
+  '/stwartchain.feepolicy.MsgDeleteTariffs': {
+    model: MODELS.MsgDeleteTariffs,
+    content: COMPONENTS.DeleteTariffs,
+    tagTheme: 'four',
+    tagDisplay: 'txDeleteTariffsLabel',
+  },
+  '/stwartchain.core.MsgWithdraw': {
+    model: MODELS.MsgWithdraw,
+    content: COMPONENTS.Withdraw,
+    tagTheme: 'four',
+    tagDisplay: 'txWithdrawLabel',
+  },
 };
 type CustomTypeToModel = typeof customTypeToModel;
 
@@ -528,6 +552,22 @@ export const convertMsgsToModels = (
       if (model === MODELS.MsgWithdrawValidatorCommission) {
         const log = transaction?.logs?.[i];
         return MODELS.MsgWithdrawValidatorCommission.fromJson(msg, log);
+      }
+      if (model === MODELS.MsgExchange) {
+        const log = transaction?.logs?.[i];
+        return MODELS.MsgExchange.fromJson(msg, log);
+      }
+      if (model === MODELS.MsgFaucet) {
+        const log = transaction?.logs?.[i];
+        return MODELS.MsgFaucet.fromJson(msg, log);
+      }
+      if (model === MODELS.MsgCreateTariffs) {
+        const log = transaction?.logs?.[i];
+        return MODELS.MsgCreateTariffs.fromJson(msg, log);
+      }
+      if (model === MODELS.MsgUpdateTariffs) {
+        const log = transaction?.logs?.[i];
+        return MODELS.MsgUpdateTariffs.fromJson(msg, log);
       }
       return model.fromJson(msg);
     }) ?? [];
