@@ -10,7 +10,16 @@ import ParamIcon from 'shared-utils/assets/icon-param.svg';
 import ProposalsIcon from 'shared-utils/assets/icon-proposals.svg';
 import TransactionIcon from 'shared-utils/assets/icon-transaction.svg';
 import UserIcon from 'shared-utils/assets/icon-user.svg';
-import { BLOCKS, HOME, PARAMS, PROPOSALS, TRANSACTIONS, VALIDATORS } from '@/utils/go_to_page';
+import AccountsIcon from 'shared-utils/assets/icon-accounts.svg';
+import {
+  BLOCKS,
+  HOME,
+  PARAMS,
+  PROPOSALS,
+  TRANSACTIONS,
+  VALIDATORS,
+  ACCOUNTS,
+} from '@/utils/go_to_page';
 
 export const getMenuItems = () => {
   const iconProps = {
@@ -49,5 +58,10 @@ export const getMenuItems = () => {
       url: PARAMS,
       icon: <ParamIcon {...iconProps} />,
     },
+    // {
+    //   key: 'top_accounts',
+    //   url: ACCOUNTS,
+    //   icon: <AccountsIcon {...iconProps} />,
+    // },
   ];
 };

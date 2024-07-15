@@ -8,6 +8,7 @@
   "delegations": "Delegations ({{num}})",
   "redelegations": "Redelegations ({{num}})",
   "unbondings": "Unbondings ({{num}})",
+  "topAccounts": "Top Accounts",
   "validator": "Validator",
   "amount": "Amount",
   "reward": "Reward",

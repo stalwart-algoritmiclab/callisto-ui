@@ -45,12 +45,11 @@ const Pagination: FC<PaginationProps> = ({
 
       return (
         <>
-          <Actions {...subProps} {...additionalProps} className={classes.mobile} />
+          <Actions {...subProps} className={classes.mobile} />
           <Actions
             {...subProps}
-            {...additionalProps}
             className={classes.tablet}
-            // pageNeighbors={2}
+          // pageNeighbors={2}
           />
         </>
       );

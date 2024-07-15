@@ -14607,3 +14607,108 @@ export function useValidatorAddressesLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type ValidatorAddressesQueryHookResult = ReturnType<typeof useValidatorAddressesQuery>;
 export type ValidatorAddressesLazyQueryHookResult = ReturnType<typeof useValidatorAddressesLazyQuery>;
 export type ValidatorAddressesQueryResult = Apollo.QueryResult<ValidatorAddressesQuery, ValidatorAddressesQueryVariables>;
+
+
+
+
+
+
+export const TopAccountsDocument = gql`
+   query TopAccountsAggregate($limit: Int = 100, $offset: Int = 0) {
+  top_accounts(limit: $limit, offset: $offset, order_by: {sum: desc}) {
+    address
+    available
+    delegation
+    unbonding
+    reward
+    sum
+    type
+    __typename
+  }
+  top_accounts_aggregate {
+    aggregate {
+      count(columns: address)
+    }
+  }
+}
+`;
+
+
+/**
+ * __useTopAccountsQuery__
+ *
+ * To run a query within a React component, call `useTopAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTopAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTopAccountsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export type TopAccountsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type TopAccountsQuery = { top_accounts: Array<{ __typename?: 'top_accounts', address: string, available?: any | null, delegation?: any | null, unbonding?: any | null, reward?: any | null, sum: any, type?: string | null }> };
+
+export function useTopAccountsQuery(baseOptions?: Apollo.QueryHookOptions<TopAccountsQuery, TopAccountsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TopAccountsQuery, TopAccountsQueryVariables>(TopAccountsDocument, options);
+      }
+export function useTopAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TopAccountsQuery, TopAccountsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TopAccountsQuery, TopAccountsQueryVariables>(TopAccountsDocument, options);
+        }
+export type TopAccountsQueryHookResult = ReturnType<typeof useTopAccountsQuery>;
+export type TopAccountsLazyQueryHookResult = ReturnType<typeof useTopAccountsLazyQuery>;
+export type TopAccountsQueryResult = Apollo.QueryResult<TopAccountsQuery, TopAccountsQueryVariables>;
+export const TopAccountsParamsDocument = gql`
+    query TopAccountsParams {
+  top_accounts_params {
+    total_accounts
+  }
+}
+    `;
+
+/**
+ * __useTopAccountsParamsQuery__
+ *
+ * To run a query within a React component, call `useTopAccountsParamsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTopAccountsParamsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTopAccountsParamsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+
+
+
+export type TopAccountsParamsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TopAccountsParamsQuery = { top_accounts_params: Array<{ __typename?: 'top_accounts_params', total_accounts: any }> };
+
+export function useTopAccountsParamsQuery(baseOptions?: Apollo.QueryHookOptions<TopAccountsParamsQuery, TopAccountsParamsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TopAccountsParamsQuery, TopAccountsParamsQueryVariables>(TopAccountsParamsDocument, options);
+      }
+export function useTopAccountsParamsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TopAccountsParamsQuery, TopAccountsParamsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TopAccountsParamsQuery, TopAccountsParamsQueryVariables>(TopAccountsParamsDocument, options);
+        }
+export type TopAccountsParamsQueryHookResult = ReturnType<typeof useTopAccountsParamsQuery>;
+export type TopAccountsParamsLazyQueryHookResult = ReturnType<typeof useTopAccountsParamsLazyQuery>;
+export type TopAccountsParamsQueryResult = Apollo.QueryResult<TopAccountsParamsQuery, TopAccountsParamsQueryVariables>;

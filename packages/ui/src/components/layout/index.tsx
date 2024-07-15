@@ -26,7 +26,6 @@ const transition: Transition = {
 const Layout = (props: LayoutProps) => {
   const { classes, cx } = useStyles();
   const { children, navTitle, className } = props;
-
   return (
     <motion.div
       initial="initial"
