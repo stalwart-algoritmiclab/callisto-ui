@@ -26,7 +26,6 @@ interface TokenDisplay {
 }
 const Exchange: FC<{ message: MsgExchange }> = (props: any) => {
   const ratesAll = useRatesAll();
-
   const transformedTokens: { [key: string]: TokenDisplay } = {};
 
   ratesAll.forEach((token: Token) => {
@@ -46,9 +45,14 @@ const Exchange: FC<{ message: MsgExchange }> = (props: any) => {
     tokenFromDenom,
     transformedTokens[message.tokenFrom.denom]?.exponent || 8
   ).value;
+  const tokenToAmountFormated = formatToken(
+    tokenToAmount,
+    tokenToDenom,
+    transformedTokens[message.tokenTo.denom]?.exponent || 8
+  ).value;
 
   const tokenFrom = `${tokenFromAmountFormated} ${tokenFromDenom}`;
-  const tokenTo = `${tokenToAmount} ${tokenToDenom}`;
+  const tokenTo = `${tokenToAmountFormated} ${tokenToDenom}`;
 
   return (
     <Typography>

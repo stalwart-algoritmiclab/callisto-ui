@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import AppTrans from '@/components/AppTrans';
 import { FC } from 'react';
 import Name from '@/components/name';
-import { MsgExchange, MsgFaucet } from '@/models';
+import { MsgFaucet } from '@/models';
 import { useProfileRecoil } from '@/recoil/profiles/hooks';
 import { formatToken, useRatesAll } from '@/utils';
 
