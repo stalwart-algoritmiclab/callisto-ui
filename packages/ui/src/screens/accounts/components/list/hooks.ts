@@ -23,7 +23,7 @@ const { exponent } = tokenUnits[primaryTokenUnit] ?? {};
  */
 export const useAccounts = (): UseAccountsState => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(100);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const offset = page * rowsPerPage;
 
@@ -45,7 +45,7 @@ export const useAccounts = (): UseAccountsState => {
   const items = useMemo(
     () =>
       data?.top_accounts
-        .filter(({ type }) => type !== 'cosmos.auth.v1beta1.ModuleAccount')
+        // .filter(({ type }) => type !== 'cosmos.auth.v1beta1.ModuleAccount')
         .map((row, i) => ({
           rank: 1 + offset + i,
           address: row.address,
@@ -60,8 +60,7 @@ export const useAccounts = (): UseAccountsState => {
         })),
     [data?.top_accounts, offset, supply.value]
   );
-
   const exists = useMemo(() => loading || !!items?.length, [loading, items]);
-
-  return { items, loading, exists, page, setPage, rowsPerPage, setRowsPerPage };
+  const totalAccounts = data?.top_accounts_aggregate?.aggregate?.count;
+  return { items, loading, exists, page, setPage, rowsPerPage, setRowsPerPage, totalAccounts };
 };

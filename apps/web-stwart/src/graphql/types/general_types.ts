@@ -14614,7 +14614,7 @@ export type ValidatorAddressesQueryResult = Apollo.QueryResult<ValidatorAddresse
 
 
 export const TopAccountsDocument = gql`
-    query TopAccounts($limit: Int = 100, $offset: Int = 0) {
+   query TopAccountsAggregate($limit: Int = 100, $offset: Int = 0) {
   top_accounts(limit: $limit, offset: $offset, order_by: {sum: desc}) {
     address
     available
@@ -14623,9 +14623,16 @@ export const TopAccountsDocument = gql`
     reward
     sum
     type
+    __typename
+  }
+  top_accounts_aggregate {
+    aggregate {
+      count(columns: address)
+    }
   }
 }
-    `;
+`;
+
 
 /**
  * __useTopAccountsQuery__

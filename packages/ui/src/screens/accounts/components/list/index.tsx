@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline, react/require-default-props */
 import Box from '@/components/box';
 import LoadAndExist from '@/components/load_and_exist';
 import Loading from '@/components/loading';
@@ -20,7 +19,7 @@ type Props = {
 const List: React.FC<Props> = ({ className }) => {
   const { classes, cx } = useStyles();
   const { t } = useAppTranslation('top_accounts');
-  const { items, loading, exists, page, setPage, rowsPerPage, setRowsPerPage } = useAccounts();
+  const { items, loading, exists, page, setPage, rowsPerPage, totalAccounts } = useAccounts();
   const addresses = useMemo(() => items?.map((x) => x.address ?? '') ?? [], [items]);
   const dataProfiles = useProfilesRecoil(addresses).profiles;
   const mergedDataWithProfiles = useMemo(
@@ -37,10 +36,12 @@ const List: React.FC<Props> = ({ className }) => {
     [setPage]
   );
 
+  const totalPages = Math.round(totalAccounts / rowsPerPage);
+
   const showData = !loading && !!items?.length;
 
   return (
-    <LoadAndExist loading={loading} exists={exists}>
+    <LoadAndExist loading={loading} exists={totalAccounts}>
       <Box className={cx(className, classes.root)}>
         <div className={classes.refreshDelayNotice}>{t('refresh_delay_notice')}</div>
         {!showData && <Loading />}
@@ -49,12 +50,11 @@ const List: React.FC<Props> = ({ className }) => {
         {showData && (
           <Pagination
             className={classes.paginate}
-            total={(page + 2) * rowsPerPage}
+            total={totalAccounts}
             rowsPerPage={rowsPerPage}
             page={page}
+            totalPages={totalPages}
             handlePageChange={handleChangePage}
-            handleRowsPerPageChange={setRowsPerPage}
-            rowsPerPageOptions={[rowsPerPage]}
           />
         )}
       </Box>

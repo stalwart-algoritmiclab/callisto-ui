@@ -30,5 +30,6 @@ export type UseAccountsState = {
   page: number;
   setPage: (page: number) => void;
   rowsPerPage: number;
+  totalAccounts: number;
   setRowsPerPage: (rowsPerPage: number) => void;
 };
