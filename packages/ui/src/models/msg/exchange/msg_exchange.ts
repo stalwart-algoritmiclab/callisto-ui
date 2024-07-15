@@ -22,27 +22,37 @@ class MsgExchange {
     this.sourceChannel = R.pathOr('', ['sourceChannel'], payload);
     this.json = R.pathOr({}, ['json'], payload);
   }
-  static getTransferAmount(log?: Log) {
+  static getTransferAmount(log?: Log, json) {
+    
+    const creator = json.creator;
     const allEvents = log?.events ?? [];
     const transferEvents = allEvents.filter((x: { type: string }) => x?.type === 'transfer');
 
-    const transferAmounts =
-      transferEvents?.[transferEvents.length - 1]?.attributes?.filter(
-        (x: { key?: string }) => x.key === 'amount'
-      ) ?? [];
+    const targetEvent = transferEvents.find((event) =>
+      event.attributes.some((attr) => attr.key === 'recipient' && attr.value === creator)
+    );
 
-    const amounts = (transferAmounts?.[transferAmounts.length - 1]?.value ?? '0')
-      .split(',')
-      .map((x) => {
-        const [amount, denom = primaryTokenUnit] = x.match(/[a-z]+|[^a-z]+/gi) ?? [];
+    if (targetEvent) {
+      const transferAmounts = targetEvent.attributes.filter((attr) => attr.key === 'amount');
+      const amounts = transferAmounts.map((amountAttr) => {
+        const match = amountAttr.value.match(/[0-9]+|[a-zA-Z-]+/g);
+        if (match && match.length >= 2) {
+          const amount = match[0];
+          const denom = match.slice(1).join('');
 
-        return formatToken(amount, denom);
+          return formatToken(amount, denom);
+        }
+
+        return formatToken('0', primaryTokenUnit);
       });
-    return amounts;
+      return amounts;
+    }
+
+    return [formatToken('0', primaryTokenUnit)];
   }
 
   static fromJson(json: object, log?: Log): MsgExchange {
-    const amounts = this.getTransferAmount(log);
+    const amounts = this.getTransferAmount(log, json);
     const instance = {
       category: 'exchange',
       json,
