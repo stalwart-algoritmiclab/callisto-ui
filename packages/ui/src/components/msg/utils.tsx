@@ -452,6 +452,67 @@ const customTypeToModel = {
     tagTheme: 'four',
     tagDisplay: 'txWithdrawLabel',
   },
+  '/stwartchain.core.MsgIssue': {
+    model: MODELS.MsgIssue,
+    content: COMPONENTS.Issue,
+    tagTheme: 'four',
+    tagDisplay: 'txIssueLabel',
+  },
+  '/stwartchain.rates.MsgCreateRates': {
+    model: MODELS.MsgCreateRates,
+    content: COMPONENTS.CreateRates,
+    tagTheme: 'four',
+    tagDisplay: 'txCreateRatesLabel',
+  },
+  '/stwartchain.rates.MsgUpdateRates': {
+    model: MODELS.MsgUpdateRates,
+    content: COMPONENTS.UpdateRates,
+    tagTheme: 'four',
+    tagDisplay: 'txUpdateRatesLabel',
+  },
+  '/stwartchain.rates.MsgDeleteRates': {
+    model: MODELS.MsgDeleteRates,
+    content: COMPONENTS.DeleteRates,
+    tagTheme: 'four',
+    tagDisplay: 'txDeleteRatesLabel',
+  },
+  '/stwartchain.rates.MsgCreateAddresses': {
+    model: MODELS.MsgCreateAddresses,
+    content: COMPONENTS.CreateAddresses,
+    tagTheme: 'four',
+    tagDisplay: 'txCreateAddressesLabel',
+  },
+  '/stwartchain.rates.MsgUpdateAddresses': {
+    model: MODELS.MsgUpdateAddresses,
+    content: COMPONENTS.UpdateAddresses,
+    tagTheme: 'four',
+    tagDisplay: 'txUpdateAddressesLabel',
+  },
+  '/stwartchain.rates.MsgDeleteAddresses': {
+    model: MODELS.MsgDeleteAddresses,
+    content: COMPONENTS.DeleteAddresses,
+    tagTheme: 'four',
+    tagDisplay: 'txDeleteAddressesLabel',
+  },
+
+  '/stwartchain.secured.MsgCreateAddresses': {
+    model: MODELS.MsgCreateAddressesSecured,
+    content: COMPONENTS.CreateAddressesSecured,
+    tagTheme: 'four',
+    tagDisplay: 'txCreateAddressesSecuredLabel',
+  },
+  '/stwartchain.secured.MsgUpdateAddresses': {
+    model: MODELS.MsgUpdateAddressesSecured,
+    content: COMPONENTS.UpdateAddressesSecured,
+    tagTheme: 'four',
+    tagDisplay: 'txUpdateAddressesSecuredLabel',
+  },
+  '/stwartchain.secured.MsgDeleteAddresses': {
+    model: MODELS.MsgDeleteAddressesSecured,
+    content: COMPONENTS.DeleteAddressesSecured,
+    tagTheme: 'four',
+    tagDisplay: 'txDeleteAddressesSecuredLabel',
+  },
 };
 type CustomTypeToModel = typeof customTypeToModel;
 

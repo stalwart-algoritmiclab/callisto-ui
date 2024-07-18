@@ -72,3 +72,17 @@ export { default as CreateTariffs } from '@/components/msg/tariffs/create_tariff
 export { default as UpdateTariffs } from '@/components/msg/tariffs/update_tariffs';
 export { default as DeleteTariffs } from '@/components/msg/tariffs/delete_tariffs';
 export { default as Withdraw } from '@/components/msg/withdraw';
+
+export { default as Issue } from '@/components/msg/issue';
+
+export { default as CreateRates } from '@/components/msg/rates/msg_create_rates';
+export { default as UpdateRates } from '@/components/msg/rates/msg_update_rates';
+export { default as DeleteRates } from '@/components/msg/rates/msg_delete_rates';
+
+export { default as CreateAddressesSecured } from '@/components/secured/msg_create_addresses_secured';
+export { default as UpdateAddressesSecured } from '@/components/secured/msg_update_addresses_secured';
+export { default as DeleteAddressesSecured } from '@/components/secured/msg_delete_addresses_secured';
+
+export { default as CreateAddresses } from '@/components/msg/rates/msg_create_addresses';
+export { default as UpdateAddresses } from '@/components/msg/rates/msg_update_addresses';
+export { default as DeleteAddresses } from '@/components/msg/rates/msg_delete_addresses';
