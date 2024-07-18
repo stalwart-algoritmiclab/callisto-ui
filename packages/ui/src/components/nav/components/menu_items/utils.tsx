@@ -58,10 +58,10 @@ export const getMenuItems = () => {
       url: PARAMS,
       icon: <ParamIcon {...iconProps} />,
     },
-    // {
-    //   key: 'top_accounts',
-    //   url: ACCOUNTS,
-    //   icon: <AccountsIcon {...iconProps} />,
-    // },
+    {
+      key: 'top_accounts',
+      url: ACCOUNTS,
+      icon: <AccountsIcon {...iconProps} />,
+    },
   ];
 };

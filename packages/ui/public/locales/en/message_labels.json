@@ -61,5 +61,17 @@
   "txUpdateTariffsLabel": "Update tariffs",
   "txDeleteTariffsLabel": "Delete tariffs",
   "txWithdrawLabel": "Withdraw",
+
+  "txIssueLabel": "Issue",
+  "txCreateRatesLabel": "Create rates",
+  "txUpdateRatesLabel": "Update rates",
+  "txDeleteRatesLabel": "Delete rates",
+  "txCreateAddressesLabel": "Create addresses",
+  "txUpdateAddressesLabel": "Update addresses",
+  "txDeleteAddressesLabel": "Delete addresses",
+  "txCreateAddressesSecuredLabel": "Create addresses secured",
+  "txUpdateAddressesSecuredLabel": "Update addresses secured",
+  "txDeleteAddressesSecuredLabel": "Delete addresses secured",
+
   "txExchangeLabel": "Exchange"
 }

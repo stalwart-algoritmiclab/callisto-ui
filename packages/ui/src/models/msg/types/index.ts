@@ -22,6 +22,17 @@ export type BaseCategories =
   | 'create_tariffs'
   | 'update_tariffs'
   | 'delete_tariffs'
+  | 'issue'
+  | 'create_rates'
+  | 'update_rates'
+  | 'delete_rates'
+  | 'create_addresses_secured'
+  | 'update_addresses_secured'
+  | 'delete_addresses_secured'
+  | 'create_addresses'
+  | 'update_addresses'
+  | 'delete_addresses'
+  | 'withdraw_tariffs'
   | 'withdraw'
   | 'others';
 export type CustomCategories = ''; // custom modules

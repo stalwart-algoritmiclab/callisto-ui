@@ -81,3 +81,20 @@ export { default as MsgCreateTariffs } from '@/models/msg/tariffs/msg_create_tar
 export { default as MsgUpdateTariffs } from '@/models/msg/tariffs/msg_update_tariffs';
 export { default as MsgDeleteTariffs } from '@/models/msg/tariffs/msg_delete_tariffs';
 export { default as MsgWithdraw } from '@/models/msg/withdraw/msg_withdraw';
+
+export { default as MsgIssue } from '@/models/msg/issue/msg_issue';
+
+
+export { default as MsgCreateRates } from '@/models/msg/rates/msg_create_rates';
+export { default as MsgUpdateRates } from '@/models/msg/rates/msg_update_rates';
+export { default as MsgDeleteRates } from '@/models/msg/rates/msg_delete_rates';
+
+
+
+export { default as MsgCreateAddressesSecured } from '@/models/msg/secured/msg_create_addresses_secured';
+export { default as MsgUpdateAddressesSecured } from '@/models/msg/secured/msg_update_addresses_secured';
+export { default as MsgDeleteAddressesSecured } from '@/models/msg/secured/msg_delete_addresses_secured';
+
+export { default as MsgCreateAddresses } from '@/models/msg/rates/msg_create_addresses';
+export { default as MsgUpdateAddresses } from '@/models/msg/rates/msg_update_addresses';
+export { default as MsgDeleteAddresses } from '@/models/msg/rates/msg_delete_addresses';
