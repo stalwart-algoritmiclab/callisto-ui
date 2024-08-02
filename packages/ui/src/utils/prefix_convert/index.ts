@@ -8,9 +8,9 @@ import { bech32 } from 'bech32';
 import chainConfig from '@/chainConfig';
 
 const { prefix } = chainConfig();
-
+const MAX_BECH32_LENGTH = 90;
 export const toValidatorAddress = (address: string) => {
-  if (!address) {
+  if (!address || address.length > MAX_BECH32_LENGTH) {
     return '';
   }
   const decode = bech32.decode(address).words;

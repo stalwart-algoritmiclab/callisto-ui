@@ -15,6 +15,7 @@ const columns: Parameters<typeof useGrid>[0] = [
   // },
   {
     key: 'top_balance',
+    align: 'right',
     width: 15,
   },
   {

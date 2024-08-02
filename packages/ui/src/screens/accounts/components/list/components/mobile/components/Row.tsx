@@ -10,7 +10,6 @@ import numeral from 'numeral';
 import { memo } from 'react';
 import useStyles from '@/screens/accounts/components/list/components/mobile/styles';
 import { RowProps } from '@/screens/accounts/components/list/components/mobile/types';
-
 const { primaryTokenUnit } = chainConfig();
 
 const Row = memo(({ data, index, itemCount }: RowProps) => {
@@ -56,7 +55,7 @@ const Row = memo(({ data, index, itemCount }: RowProps) => {
         <Typography variant="h4" className="label">
           {t('top_balance')}
         </Typography>
-        <Typography variant="body1" className="value">
+        <Typography variant="body1" className="value_balance">
           {numeral(token.value).format('0,0')} {token.displayDenom.toUpperCase()}
         </Typography>
       </div>

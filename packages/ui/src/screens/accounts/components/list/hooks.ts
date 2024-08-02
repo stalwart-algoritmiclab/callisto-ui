@@ -23,7 +23,7 @@ const { exponent } = tokenUnits[primaryTokenUnit] ?? {};
  */
 export const useAccounts = (): UseAccountsState => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(15);
 
   const offset = page * rowsPerPage;
 

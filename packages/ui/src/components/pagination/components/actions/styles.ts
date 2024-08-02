@@ -10,7 +10,7 @@ const useStyles = makeStyles()((theme) => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    margin: 0,
+    margin: '0 0 0 20px',
     listStyleType: 'none',
     '& .MuiButtonBase-root, & .MuiInputBase-input': {
       background: theme.palette.custom.general.surfaceTwo,

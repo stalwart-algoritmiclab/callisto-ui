@@ -28,7 +28,7 @@ const DataBlocks: FC<ComponentDefault> = ({ className }) => {
       className: classes.blockTime,
     },
     {
-      key: t('price'),
+      key: t('SSC Price'),
       value: state.price !== null ? `$${numeral(state.price).format('0.000')}` : '$1',
       // description: t('dataFrom'),
       // Icon: <CoinGeckoIcon />,
