@@ -24,17 +24,13 @@ export const formatMarket = (data: AtomState) => {
       key: 'marketCap',
       data: marketCap,
     },
-    // {
-    //   key: 'inflation',
-    //   data: `${formatNumber(Big(data.inflation)?.times(100).toPrecision(), 0)}%`,
-    // },
-    // {
-    //   key: 'apr',
-    //   data: `${formatNumber(Big(data.apr)?.times(100).toPrecision(), 2)}%`,
-    // },
     {
       key: 'supply',
       data: `${formatNumber(data.supply.value, 2)} ${data.supply.displayDenom.toUpperCase()}`,
+    },
+    {
+      key: 'STW Price',
+      data: `$0.3`,
     },
     {
       key: 'communityPool',
